@@ -41,8 +41,9 @@ async function main() {
 
     let versionData = null;
     let latestRelease = null;
+    let hasError = false;
 
-    // Fetch version.json
+    // Try to fetch version.json
     try {
       const versionUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${defaultBranch}/version.json`;
       const versionRes = await axios.get(versionUrl);
@@ -52,29 +53,38 @@ async function main() {
       const msg = `⚠️  No version.json in ${full_name} (${err.response?.status || err.message})`;
       console.warn(msg);
       errors.push(msg);
+      hasError = true;
     }
 
-    // Fetch latest release
-    try {
-      const releaseUrl = `https://api.github.com/repos/${owner.login}/${name}/releases/latest`;
-      const releaseRes = await axios.get(releaseUrl, { headers });
-      latestRelease = {
-        tag_name: releaseRes.data.tag_name,
-        name: releaseRes.data.name,
-        published_at: releaseRes.data.published_at,
-        html_url: releaseRes.data.html_url,
-      };
-      console.log(`🏷️  Latest release: ${latestRelease.tag_name}`);
-    } catch (err) {
-      if (err.response && err.response.status === 404) {
-        const msg = `ℹ️  No releases found for ${full_name}`;
-        console.warn(msg);
-        errors.push(msg);
-      } else {
-        const msg = `⚠️  Error fetching release info for ${full_name}: ${err.message}`;
-        console.warn(msg);
-        errors.push(msg);
+    // Try to fetch latest release (only if version.json succeeded)
+    if (!hasError) {
+      try {
+        const releaseUrl = `https://api.github.com/repos/${owner.login}/${name}/releases/latest`;
+        const releaseRes = await axios.get(releaseUrl, { headers });
+        latestRelease = {
+          tag_name: releaseRes.data.tag_name,
+          name: releaseRes.data.name,
+          published_at: releaseRes.data.published_at,
+          html_url: releaseRes.data.html_url,
+        };
+        console.log(`🏷️  Latest release: ${latestRelease.tag_name}`);
+      } catch (err) {
+        if (err.response && err.response.status === 404) {
+          const msg = `ℹ️  No releases found for ${full_name}`;
+          console.warn(msg);
+          errors.push(msg);
+        } else {
+          const msg = `⚠️  Error fetching release info for ${full_name}: ${err.message}`;
+          console.warn(msg);
+          errors.push(msg);
+        }
+        hasError = true;
       }
+    }
+
+    if (hasError) {
+      console.log(`🚫 Skipping ${full_name} due to errors.\n`);
+      continue;
     }
 
     results.push({
@@ -90,7 +100,7 @@ async function main() {
 
   // Write results
   fs.writeFileSync("releases.json", JSON.stringify(results, null, 2));
-  console.log("🎉 releases.json generated successfully!");
+  console.log(`🎉 releases.json generated successfully! (${results.length} repos included)`);
 
   // Write errors to ERRORS.md
   const timestamp = new Date().toISOString();
