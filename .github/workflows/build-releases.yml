@@ -1,0 +1,63 @@
+name: Build Releases JSON
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # runs once a day at midnight UTC
+  workflow_dispatch: # allows manual trigger
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install axios
+
+      - name: Run generator
+        id: generator
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/generateReleases.js
+
+          # Count number of errors (lines starting with dash in ERRORS.md)
+          ERRORS_COUNT=$(grep -c '^-' ERRORS.md || true)
+          echo "errors_count=$ERRORS_COUNT" >> $GITHUB_OUTPUT
+
+      - name: Commit and push results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Add both generated files
+          git add releases.json ERRORS.md
+
+          # Commit only if there are changes
+          git diff --cached --quiet || git commit -m "Update releases.json and ERRORS.md [skip ci]"
+
+          # Push changes back to the repo
+          git push
+
+      - name: Upload ERRORS.md as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-report
+          path: ERRORS.md
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Print summary
+        run: |
+          echo "## 🧩 Release Aggregation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Total errors or warnings: **${{ steps.generator.outputs.errors_count }}**" >> $GITHUB_STEP_SUMMARY
+          echo "- Files generated: \`releases.json\`, \`ERRORS.md\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Error report attached as an artifact named 'error-report'." >> $GITHUB_STEP_SUMMARY
