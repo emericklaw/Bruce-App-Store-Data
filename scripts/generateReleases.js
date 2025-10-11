@@ -50,6 +50,7 @@ async function main() {
   let page = 1;
   const perPage = 50;
   const errors = [];
+  const blocklistHits = [];
 
   while (true) {
     const searchUrl = `https://api.github.com/search/repositories?q=topic:bruce-app-store&per_page=${perPage}&page=${page}`;
@@ -67,7 +68,6 @@ async function main() {
   console.log(`📦 Found ${repos.length} repositories.\n`);
 
   const categorizedResults = {}; // { category: [apps] }
-  const blocklistHits = [];
 
   for (const repo of repos) {
     const { full_name, owner, name } = repo;
@@ -109,8 +109,25 @@ async function main() {
 
       if (!metadataData.name) repoErrors.push("Missing required field: name");
       if (!metadataData.description) repoErrors.push("Missing required field: description");
-      if (!Array.isArray(metadataData.files) || metadataData.files.length === 0)
+
+      // Validate files
+      if (!Array.isArray(metadataData.files) || metadataData.files.length === 0) {
         repoErrors.push("Field 'files' is missing or empty");
+      } else {
+        metadataData.files.forEach((file, idx) => {
+          if (typeof file !== "object" || !file.source || !file.destination) {
+            repoErrors.push(`files[${idx}] must be an object with 'source' and 'destination' keys`);
+            return;
+          }
+          // Security checks to prevent path exploits
+          const invalidChars = /(\.\.|\/|\\|~)/;
+          if (invalidChars.test(file.source))
+            repoErrors.push(`files[${idx}].source contains invalid or unsafe characters`);
+          if (invalidChars.test(file.destination))
+            repoErrors.push(`files[${idx}].destination contains invalid or unsafe characters`);
+        });
+      }
+
       if (!metadataData.category) repoErrors.push("Missing required field: category");
       else if (!validCategories.includes(metadataData.category))
         repoErrors.push(`Invalid category '${metadataData.category}'`);
@@ -122,9 +139,8 @@ async function main() {
           errors.push(msg);
         });
         hasError = true;
-      } else {
-        if (verbose) console.log(`✅ Valid metadata.json`);
-      }
+      } else if (verbose) console.log(`✅ Valid metadata.json`);
+
     } catch (err) {
       const msg = `⚠️  Error fetching metadata.json for ${full_name}: ${err.response?.status || err.message}`;
       console.warn(msg);
