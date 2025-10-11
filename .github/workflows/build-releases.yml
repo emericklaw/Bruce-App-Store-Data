@@ -39,26 +39,25 @@ jobs:
           echo "🔧 Running generateReleases.js (trigger: $GITHUB_EVENT_NAME, verbose: $VERBOSE)"
           node scripts/generateReleases.js
 
-          # Count number of errors (lines starting with dash in ERRORS.md)
+          # Count errors in ERRORS.md
           ERRORS_COUNT=$(grep -c '^-' ERRORS.md || true)
           echo "errors_count=$ERRORS_COUNT" >> $GITHUB_OUTPUT
 
           # Extract first 5 error lines for preview
           PREVIEW=$(grep '^-' ERRORS.md | head -n 5 || true)
-
-          # Encode for GITHUB_OUTPUT (required)
-          ENCODED_PREVIEW="${PREVIEW//'%'/'%25'}"
-          ENCODED_PREVIEW="${ENCODED_PREVIEW//$'\n'/'%0A'}"
-          ENCODED_PREVIEW="${ENCODED_PREVIEW//$'\r'/'%0D'}"
-          echo "error_preview=$ENCODED_PREVIEW" >> $GITHUB_OUTPUT
+          # Encode for GitHub output
+          PREVIEW="${PREVIEW//'%'/'%25'}"
+          PREVIEW="${PREVIEW//$'\n'/'%0A'}"
+          PREVIEW="${PREVIEW//$'\r'/'%0D'}"
+          echo "error_preview=$PREVIEW" >> $GITHUB_OUTPUT
 
       - name: Commit and push results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add releases.json ERRORS.md
-          git diff --cached --quiet || git commit -m "Update releases.json and ERRORS.md [skip ci]"
+          git add releases.json ERRORS.md repositories/
+          git diff --cached --quiet || git commit -m "🤖 Update releases.json, ERRORS.md and metadata [skip ci]"
           git push
 
       - name: Upload ERRORS.md as artifact
@@ -75,7 +74,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- Trigger: \`${{ github.event_name }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Total errors or warnings: **${{ steps.generator.outputs.errors_count }}**" >> $GITHUB_STEP_SUMMARY
-          echo "- Files generated: \`releases.json\`, \`ERRORS.md\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Files generated: \`releases.json\`, \`ERRORS.md\`, \`/repositories/*\`" >> $GITHUB_STEP_SUMMARY
           echo "- Error report attached as an artifact named 'error-report'." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🪵 Error Preview (first 5 entries)" >> $GITHUB_STEP_SUMMARY
@@ -83,7 +82,6 @@ jobs:
           if [ "${{ steps.generator.outputs.errors_count }}" -eq 0 ]; then
             echo "✅ No errors or warnings!" >> $GITHUB_STEP_SUMMARY
           else
-            # Use actual newlines for step summary
             grep '^-' ERRORS.md | head -n 5 >> $GITHUB_STEP_SUMMARY
             if [ "${{ steps.generator.outputs.errors_count }}" -gt 5 ]; then
               echo "" >> $GITHUB_STEP_SUMMARY
