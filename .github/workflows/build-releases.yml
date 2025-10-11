@@ -3,10 +3,10 @@ name: Build Releases JSON
 on:
   schedule:
     - cron: '0 0 * * *' # runs once a day at midnight UTC
-  workflow_dispatch: # allows manual trigger
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write # allow pushing commits
 
 jobs:
   generate:
@@ -35,7 +35,7 @@ jobs:
           ERRORS_COUNT=$(grep -c '^-' ERRORS.md || true)
           echo "errors_count=$ERRORS_COUNT" >> $GITHUB_OUTPUT
 
-          # Extract first 5 error lines (for preview)
+          # Extract first 5 error lines for preview
           PREVIEW=$(grep '^-' ERRORS.md | head -n 5 || true)
           PREVIEW="${PREVIEW//'%'/'%25'}"
           PREVIEW="${PREVIEW//$'\n'/'%0A'}"
@@ -47,13 +47,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Add both generated files
           git add releases.json ERRORS.md
-
-          # Commit only if there are changes
           git diff --cached --quiet || git commit -m "Update releases.json and ERRORS.md [skip ci]"
-
-          # Push changes back to the repo
           git push
 
       - name: Upload ERRORS.md as artifact
