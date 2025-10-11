@@ -57,9 +57,18 @@ async function main() {
         throw new Error("Response is not valid JSON");
       }
 
-      console.log(`✅ Found metadata.json`);
+      // Validate required fields
+      if (!metadataData.app_name || !metadataData.description) {
+        throw new Error("Missing required fields: app_name or description");
+      }
+
+      if (!Array.isArray(metadataData.files) || metadataData.files.length === 0) {
+        throw new Error("Field 'files' is missing or empty");
+      }
+
+      console.log(`✅ Valid metadata.json`);
     } catch (err) {
-      const msg = `⚠️  No metadata.json in ${full_name} (${err.response?.status || err.message})`;
+      const msg = `⚠️  Invalid metadata.json in ${full_name}: ${err.response?.status || err.message}`;
       console.warn(msg);
       errors.push(msg);
       hasError = true;
@@ -91,7 +100,7 @@ async function main() {
       }
     }
 
-    // Only include repos with no errors
+    // Only include repos with valid metadata & successful release fetch
     if (hasError) {
       console.log(`🚫 Skipping ${full_name} due to errors.\n`);
       continue;
