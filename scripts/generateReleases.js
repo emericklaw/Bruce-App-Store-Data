@@ -43,6 +43,43 @@ function isBlocked(fullName) {
   return blocklist.some(pattern => wildcardMatch(pattern, fullName));
 }
 
+// Security check for file paths
+function hasUnsafePath(value) {
+  const invalidChars = /(\.\.|\/|\\|~)/;
+  return invalidChars.test(value);
+}
+
+// Validate one metadata entry
+function validateMetadata(entry, full_name, index = null) {
+  const prefix = index !== null ? `[entry ${index}] ` : "";
+  const errors = [];
+
+  if (!entry.name) errors.push(`${prefix}Missing required field: name`);
+  if (!entry.description) errors.push(`${prefix}Missing required field: description`);
+
+  // Validate files
+  if (!Array.isArray(entry.files) || entry.files.length === 0) {
+    errors.push(`${prefix}Field 'files' is missing or empty`);
+  } else {
+    entry.files.forEach((file, i) => {
+      if (typeof file !== "object" || !file.source || !file.destination) {
+        errors.push(`${prefix}files[${i}] must be an object with 'source' and 'destination' keys`);
+        return;
+      }
+      if (hasUnsafePath(file.source))
+        errors.push(`${prefix}files[${i}].source contains invalid or unsafe characters`);
+      if (hasUnsafePath(file.destination))
+        errors.push(`${prefix}files[${i}].destination contains invalid or unsafe characters`);
+    });
+  }
+
+  if (!entry.category) errors.push(`${prefix}Missing required field: category`);
+  else if (!validCategories.includes(entry.category))
+    errors.push(`${prefix}Invalid category '${entry.category}'`);
+
+  return errors;
+}
+
 async function main() {
   console.log("🔎 Searching for repositories with topic 'bruce-app-store'...");
 
@@ -83,7 +120,7 @@ async function main() {
     console.log(`➡️  Processing ${full_name}...`);
 
     let latestRelease = null;
-    let metadataData = null;
+    let metadataRaw = null;
     let hasError = false;
 
     try {
@@ -100,47 +137,43 @@ async function main() {
       const metadataUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${latestRelease.tag_name}/metadata.json`;
       const metadataRes = await axios.get(metadataUrl);
 
-      if (typeof metadataRes.data === "string") metadataData = JSON.parse(metadataRes.data);
-      else if (typeof metadataRes.data === "object") metadataData = metadataRes.data;
-      else throw new Error("Response is not valid JSON");
+      metadataRaw =
+        typeof metadataRes.data === "string"
+          ? JSON.parse(metadataRes.data)
+          : metadataRes.data;
 
-      // Validate metadata and collect all errors
-      const repoErrors = [];
+      // Handle either single or multiple entries
+      const entries = Array.isArray(metadataRaw) ? metadataRaw : [metadataRaw];
 
-      if (!metadataData.name) repoErrors.push("Missing required field: name");
-      if (!metadataData.description) repoErrors.push("Missing required field: description");
+      let repoHasError = false;
+      for (let i = 0; i < entries.length; i++) {
+        const entry = entries[i];
+        const entryErrors = validateMetadata(entry, full_name, Array.isArray(metadataRaw) ? i : null);
 
-      // Validate files
-      if (!Array.isArray(metadataData.files) || metadataData.files.length === 0) {
-        repoErrors.push("Field 'files' is missing or empty");
-      } else {
-        metadataData.files.forEach((file, idx) => {
-          if (typeof file !== "object" || !file.source || !file.destination) {
-            repoErrors.push(`files[${idx}] must be an object with 'source' and 'destination' keys`);
-            return;
-          }
-          // Security checks to prevent path exploits
-          const invalidChars = /(\.\.|\/|\\|~)/;
-          if (invalidChars.test(file.source))
-            repoErrors.push(`files[${idx}].source contains invalid or unsafe characters`);
-          if (invalidChars.test(file.destination))
-            repoErrors.push(`files[${idx}].destination contains invalid or unsafe characters`);
+        if (entryErrors.length > 0) {
+          entryErrors.forEach(err => {
+            const msg = `⚠️  ${full_name}: ${err}`;
+            console.warn(msg);
+            errors.push(msg);
+          });
+          repoHasError = true;
+          continue;
+        }
+
+        // Add to categorized results
+        const category = entry.category;
+        if (!categorizedResults[category]) categorizedResults[category] = [];
+
+        categorizedResults[category].push({
+          repo: name,
+          owner: owner.login,
+          latest_release: latestRelease,
+          metadata: entry,
         });
       }
 
-      if (!metadataData.category) repoErrors.push("Missing required field: category");
-      else if (!validCategories.includes(metadataData.category))
-        repoErrors.push(`Invalid category '${metadataData.category}'`);
-
-      if (repoErrors.length > 0) {
-        repoErrors.forEach(errMsg => {
-          const msg = `⚠️  ${full_name}: ${errMsg}`;
-          console.warn(msg);
-          errors.push(msg);
-        });
-        hasError = true;
-      } else if (verbose) console.log(`✅ Valid metadata.json`);
-
+      if (repoHasError) hasError = true;
+      else if (verbose) console.log(`✅ Valid metadata.json`);
     } catch (err) {
       const msg = `⚠️  Error fetching metadata.json for ${full_name}: ${err.response?.status || err.message}`;
       console.warn(msg);
@@ -149,21 +182,10 @@ async function main() {
     }
 
     if (hasError) {
-      console.log(`🚫 Skipping ${full_name} due to errors.\n`);
-      continue;
+      console.log(`🚫 Skipping ${full_name} (some entries invalid).\n`);
+    } else {
+      console.log("");
     }
-
-    // Insert into categorized results
-    const category = metadataData.category;
-    if (!categorizedResults[category]) categorizedResults[category] = [];
-    categorizedResults[category].push({
-      repo: name,
-      owner: owner.login,
-      latest_release: latestRelease,
-      metadata: metadataData,
-    });
-
-    console.log(""); // blank line
   }
 
   // Sort apps in each category by metadata.name
@@ -204,16 +226,8 @@ async function main() {
     sortedCategorizedResults[cat].sort((a, b) => a.metadata.name.localeCompare(b.metadata.name));
   }
 
-  // Sort categories alphabetically again
-  const finalSortedResults = {};
-  Object.keys(sortedCategorizedResults)
-    .sort()
-    .forEach(cat => {
-      finalSortedResults[cat] = sortedCategorizedResults[cat];
-    });
-
   // Write releases.json
-  fs.writeFileSync("releases.json", JSON.stringify(finalSortedResults, null, 2));
+  fs.writeFileSync("releases.json", JSON.stringify(sortedCategorizedResults, null, 2));
   console.log(`🎉 releases.json generated successfully.`);
 
   // Write ERRORS.md
