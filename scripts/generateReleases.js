@@ -51,7 +51,6 @@ async function main() {
         tag_name: releaseRes.data.tag_name,
         name: releaseRes.data.name,
         published_at: releaseRes.data.published_at,
-        html_url: releaseRes.data.html_url,
       };
 
       // Fetch metadata.json from release tag
