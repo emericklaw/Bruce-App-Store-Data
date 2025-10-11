@@ -76,7 +76,7 @@ async function main() {
       if (!metadataData.category) {
         repoErrors.push("Missing required field: category");
       } else if (!validCategories.includes(metadataData.category)) {
-        repoErrors.push(`Invalid category '${metadataData.category}' not in categories.json`);
+        repoErrors.push(`Invalid category '${metadataData.category}'`);
       }
 
       if (repoErrors.length > 0) {
