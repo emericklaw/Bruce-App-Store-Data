@@ -65,6 +65,26 @@
   ],
   "Utilities": [
     {
+      "repo": "Bruce-Flashlight-App",
+      "owner": "emericklaw",
+      "latest_release": {
+        "tag_name": "1.0.0",
+        "name": "1.0.0",
+        "published_at": "2025-10-11T20:18:24Z"
+      },
+      "metadata": {
+        "name": "Flashlight",
+        "description": "Simple multi-colour flashlight",
+        "category": "Utilities",
+        "files": [
+          {
+            "source": "Flashlight.js",
+            "destination": "Flashlight.js"
+          }
+        ]
+      }
+    },
+    {
       "repo": "Bruce-Hello-World-Example-App",
       "owner": "emericklaw",
       "latest_release": {
