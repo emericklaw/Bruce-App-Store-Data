@@ -1,5 +1,6 @@
 # ❗ Error Report
 
-Generated: 2025-10-11T13:46:13.925Z
+Generated: 2025-10-11T13:52:18.262Z
 
-✅ No errors or warnings detected this run!
+### 1 issues detected:
+- ⚠️  Error fetching metadata.json for emericklaw/Bruce-App-Store: 404
