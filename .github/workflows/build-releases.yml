@@ -2,7 +2,7 @@ name: Build Releases JSON
 
 on:
   schedule:
-    - cron: '0 0 * * *' # runs once a day at midnight UTC
+    - cron: '*/15 * * * *' # run every 15 minutes
   workflow_dispatch:
 
 permissions:
