@@ -81,7 +81,7 @@ jobs:
           echo "### 🪵 Error Preview (first 5 entries)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.generator.outputs.errors_count }}" -eq 0 ]; then
-            echo "✅ No errors or warnings this run!" >> $GITHUB_STEP_SUMMARY
+            echo "✅ No errors or warnings!" >> $GITHUB_STEP_SUMMARY
           else
             # Use actual newlines for step summary
             grep '^-' ERRORS.md | head -n 5 >> $GITHUB_STEP_SUMMARY
