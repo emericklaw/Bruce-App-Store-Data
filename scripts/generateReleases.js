@@ -233,6 +233,7 @@ async function main() {
         }
       }
     } catch (e) {
+      console.log(e);
       console.warn("⚠️ Could not parse releases_manual.json, ignoring it.");
     }
   }
