@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 import axios from "axios";
 
 const token = process.env.GITHUB_TOKEN;
@@ -57,7 +58,6 @@ function validateMetadata(entry, full_name, index = null) {
   if (!entry.name) errors.push(`${prefix}Missing required field: name`);
   if (!entry.description) errors.push(`${prefix}Missing required field: description`);
 
-  // Validate files
   if (!Array.isArray(entry.files) || entry.files.length === 0) {
     errors.push(`${prefix}Field 'files' is missing or empty`);
   } else {
@@ -78,6 +78,21 @@ function validateMetadata(entry, full_name, index = null) {
     errors.push(`${prefix}Invalid category '${entry.category}'`);
 
   return errors;
+}
+
+// Save full metadata entry to repository folder
+function saveMetadataFile(entry, owner, index = null) {
+  const dir = path.join("repositories", owner, entry.name);
+  fs.mkdirSync(dir, { recursive: true });
+  const filePath = path.join(dir, "metadata.json");
+
+  let dataToWrite = entry;
+  if (index !== null) {
+    dataToWrite = Array.isArray(entry) ? entry[index] : entry;
+  }
+
+  fs.writeFileSync(filePath, JSON.stringify(dataToWrite, null, 2));
+  return filePath;
 }
 
 async function main() {
@@ -109,7 +124,6 @@ async function main() {
   for (const repo of repos) {
     const { full_name, owner, name } = repo;
 
-    // Check blocklist first
     if (isBlocked(full_name)) {
       const msg = `🛑 Skipping ${full_name}: Blocked by blocklist.json`;
       blocklistHits.push(msg);
@@ -124,7 +138,6 @@ async function main() {
     let hasError = false;
 
     try {
-      // Fetch latest release
       const releaseUrl = `https://api.github.com/repos/${owner.login}/${name}/releases/latest`;
       const releaseRes = await axios.get(releaseUrl, { headers });
       latestRelease = {
@@ -133,16 +146,11 @@ async function main() {
         published_at: releaseRes.data.published_at,
       };
 
-      // Fetch metadata.json from release tag
       const metadataUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${latestRelease.tag_name}/metadata.json`;
       const metadataRes = await axios.get(metadataUrl);
-
       metadataRaw =
-        typeof metadataRes.data === "string"
-          ? JSON.parse(metadataRes.data)
-          : metadataRes.data;
+        typeof metadataRes.data === "string" ? JSON.parse(metadataRes.data) : metadataRes.data;
 
-      // Handle either single or multiple entries
       const entries = Array.isArray(metadataRaw) ? metadataRaw : [metadataRaw];
 
       let repoHasError = false;
@@ -160,7 +168,9 @@ async function main() {
           continue;
         }
 
-        // Add to categorized results
+        // Save full metadata file
+        const metadataFilePath = saveMetadataFile(entry, owner.login);
+
         const category = entry.category;
         if (!categorizedResults[category]) categorizedResults[category] = [];
 
@@ -168,7 +178,9 @@ async function main() {
           repo: name,
           owner: owner.login,
           latest_release: latestRelease,
-          metadata: entry,
+          metadata_file: metadataFilePath,
+          metadata_index: Array.isArray(metadataRaw) ? i : null,
+          metadata_summary: { ...entry, files: undefined }, // remove files for main releases.json
         });
       }
 
@@ -188,12 +200,11 @@ async function main() {
     }
   }
 
-  // Sort apps in each category by metadata.name
+  // Sort apps and categories
   for (const cat of Object.keys(categorizedResults)) {
-    categorizedResults[cat].sort((a, b) => a.metadata.name.localeCompare(b.metadata.name));
+    categorizedResults[cat].sort((a, b) => a.metadata_summary.name.localeCompare(b.metadata_summary.name));
   }
 
-  // Sort categories alphabetically
   const sortedCategorizedResults = {};
   Object.keys(categorizedResults)
     .sort()
@@ -201,7 +212,7 @@ async function main() {
       sortedCategorizedResults[cat] = categorizedResults[cat];
     });
 
-  // Merge releases_manual.json if it exists
+  // Merge releases_manual.json
   if (fs.existsSync("releases_manual.json")) {
     try {
       const manualData = JSON.parse(fs.readFileSync("releases_manual.json", "utf-8"));
@@ -209,11 +220,16 @@ async function main() {
         if (!sortedCategorizedResults[category]) sortedCategorizedResults[category] = [];
 
         for (const app of apps) {
-          // Skip if same owner/repo AND metadata.name exists
           const exists = sortedCategorizedResults[category].some(
-            a => a.owner === app.owner && a.repo === app.repo && a.metadata.name === app.metadata.name
+            a => a.owner === app.owner && a.repo === app.repo && a.metadata_summary.name === app.metadata_summary.name
           );
-          if (!exists) sortedCategorizedResults[category].push(app);
+          if (!exists) {
+            // Save metadata file if missing
+            if (!fs.existsSync(app.metadata_file)) {
+              saveMetadataFile(app.metadata_summary, app.owner);
+            }
+            sortedCategorizedResults[category].push(app);
+          }
         }
       }
     } catch (e) {
@@ -221,18 +237,24 @@ async function main() {
     }
   }
 
-  // Re-sort apps after merge
+  // Re-sort after merge
   for (const cat of Object.keys(sortedCategorizedResults)) {
-    sortedCategorizedResults[cat].sort((a, b) => a.metadata.name.localeCompare(b.metadata.name));
+    sortedCategorizedResults[cat].sort((a, b) => a.metadata_summary.name.localeCompare(b.metadata_summary.name));
   }
 
-  // Write releases.json
-  fs.writeFileSync("releases.json", JSON.stringify(sortedCategorizedResults, null, 2));
+  const finalSortedResults = {};
+  Object.keys(sortedCategorizedResults)
+    .sort()
+    .forEach(cat => {
+      finalSortedResults[cat] = sortedCategorizedResults[cat];
+    });
+
+  // Write main releases.json
+  fs.writeFileSync("releases.json", JSON.stringify(finalSortedResults, null, 2));
   console.log(`🎉 releases.json generated successfully.`);
 
   // Write ERRORS.md
   const sections = ["# ❗ Error Report", ""];
-
   if (errors.length === 0 && (!isManualRun || blocklistHits.length === 0)) {
     sections.push("✅ No errors or warnings detected");
   } else {
@@ -246,7 +268,6 @@ async function main() {
       sections.push(blocklistHits.map(e => `- ${e}`).join("\n"));
     }
   }
-
   fs.writeFileSync("ERRORS.md", sections.join("\n"));
   console.log(`📝 ERRORS.md written (${errors.length + blocklistHits.length} entries).`);
 }
