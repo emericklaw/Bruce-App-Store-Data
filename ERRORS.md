@@ -1,5 +1,6 @@
 # ❗ Error Report
 
-Generated: 2025-10-11T05:20:26.102Z
+Generated: 2025-10-11T05:23:52.402Z
 
-✅ No errors or warnings detected this run!
+### 1 issues detected:
+- ⚠️  Error fetching metadata.json for emericklaw/Bruce-Interpreter-Flashlight-App: Field 'files' is missing or empty
