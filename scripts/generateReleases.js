@@ -45,7 +45,7 @@ function isBlocked(fullName) {
 
 // Security check for file paths
 function hasUnsafePath(value) {
-  const invalidChars = /(\.\.|\/|\\|~)/;
+  const invalidChars = /(\.\.|\\|~)/;
   return invalidChars.test(value);
 }
 
