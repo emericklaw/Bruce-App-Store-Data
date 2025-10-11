@@ -11,7 +11,7 @@ const headers = {
 const validCategories = JSON.parse(fs.readFileSync("categories.json", "utf-8"));
 
 async function main() {
-  console.log("🔎 Searching for repositories with topic 'bruce-interpreter-app'...");
+  console.log("🔎 Searching for repositories with topic 'bruce-app-store'...");
 
   const repos = [];
   let page = 1;
@@ -19,7 +19,7 @@ async function main() {
   const errors = [];
 
   while (true) {
-    const searchUrl = `https://api.github.com/search/repositories?q=topic:bruce-interpreter-app&per_page=${perPage}&page=${page}`;
+    const searchUrl = `https://api.github.com/search/repositories?q=topic:bruce-app-store&per_page=${perPage}&page=${page}`;
     try {
       const res = await axios.get(searchUrl, { headers });
       repos.push(...res.data.items);
