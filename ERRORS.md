@@ -1,3 +1,3 @@
 # ❗ Error Report
 
-✅ No errors or warnings detected this run!
+✅ No errors or warnings detected
