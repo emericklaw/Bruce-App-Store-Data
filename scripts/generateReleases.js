@@ -2,11 +2,13 @@ import fs from "fs";
 import axios from "axios";
 
 const token = process.env.GITHUB_TOKEN;
-
 const headers = {
   Authorization: `token ${token}`,
   Accept: "application/vnd.github+json",
 };
+
+// Load valid categories from categories.json in main repo
+const validCategories = JSON.parse(fs.readFileSync("categories.json", "utf-8"));
 
 async function main() {
   console.log("🔎 Searching for repositories with topic 'bruce-interpreter-app'...");
@@ -16,7 +18,6 @@ async function main() {
   const perPage = 50;
   const errors = [];
 
-  // Paginate through search results
   while (true) {
     const searchUrl = `https://api.github.com/search/repositories?q=topic:bruce-interpreter-app&per_page=${perPage}&page=${page}`;
     try {
@@ -32,7 +33,7 @@ async function main() {
 
   console.log(`📦 Found ${repos.length} repositories.\n`);
 
-  const results = [];
+  const categorizedResults = {}; // { category: [apps] }
 
   for (const repo of repos) {
     const { full_name, owner, name } = repo;
@@ -42,8 +43,8 @@ async function main() {
     let metadataData = null;
     let hasError = false;
 
-    // Fetch latest release
     try {
+      // Fetch latest release
       const releaseUrl = `https://api.github.com/repos/${owner.login}/${name}/releases/latest`;
       const releaseRes = await axios.get(releaseUrl, { headers });
       latestRelease = {
@@ -52,7 +53,6 @@ async function main() {
         published_at: releaseRes.data.published_at,
         html_url: releaseRes.data.html_url,
       };
-      console.log(`🏷️  Latest release: ${latestRelease.tag_name}`);
 
       // Fetch metadata.json from release tag
       const metadataUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${latestRelease.tag_name}/metadata.json`;
@@ -67,16 +67,25 @@ async function main() {
       }
 
       // Validate required fields
-      if (!metadataData.app_name || !metadataData.description) {
-        throw new Error("Missing required fields: app_name or description");
+      if (!metadataData.name || !metadataData.description) {
+        throw new Error("Missing required fields: name or description");
       }
+
       if (!Array.isArray(metadataData.files) || metadataData.files.length === 0) {
         throw new Error("Field 'files' is missing or empty");
       }
 
+      if (!metadataData.category) {
+        throw new Error("Missing required field: category");
+      }
+
+      if (!validCategories.includes(metadataData.category)) {
+        throw new Error(`Invalid category '${metadataData.category}' not in categories.json`);
+      }
+
       console.log(`✅ Valid metadata.json`);
     } catch (err) {
-      const msg = `⚠️  Error fetching metadata.json for ${full_name}: ${err.response?.status || err.message}`;
+      const msg = `⚠️  Invalid metadata.json for ${full_name}: ${err.response?.status || err.message}`;
       console.warn(msg);
       errors.push(msg);
       hasError = true;
@@ -87,7 +96,10 @@ async function main() {
       continue;
     }
 
-    results.push({
+    // Insert into categorized results
+    const category = metadataData.category;
+    if (!categorizedResults[category]) categorizedResults[category] = [];
+    categorizedResults[category].push({
       repo: name,
       owner: owner.login,
       latest_release: latestRelease,
@@ -97,11 +109,24 @@ async function main() {
     console.log(""); // blank line
   }
 
-  // Write results
-  fs.writeFileSync("releases.json", JSON.stringify(results, null, 2));
-  console.log(`🎉 releases.json generated successfully! (${results.length} repos included)`);
+  // Sort apps in each category by metadata.name
+  for (const cat of Object.keys(categorizedResults)) {
+    categorizedResults[cat].sort((a, b) => a.metadata.name.localeCompare(b.metadata.name));
+  }
 
-  // Write errors to ERRORS.md
+  // Sort categories alphabetically
+  const sortedCategorizedResults = {};
+  Object.keys(categorizedResults)
+    .sort()
+    .forEach(cat => {
+      sortedCategorizedResults[cat] = categorizedResults[cat];
+    });
+
+  // Write releases.json
+  fs.writeFileSync("releases.json", JSON.stringify(sortedCategorizedResults, null, 2));
+  console.log(`🎉 releases.json generated successfully! Categories: ${Object.keys(sortedCategorizedResults).length}`);
+
+  // Write ERRORS.md
   const timestamp = new Date().toISOString();
   const errorMarkdown = [
     `# ❗ Error Report`,
