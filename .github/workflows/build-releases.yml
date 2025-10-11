@@ -8,7 +8,7 @@ on:
       verbose:
         description: "Enable detailed logging output"
         required: false
-        default: "false"
+        default: "true"
 
 permissions:
   contents: write # allow pushing commits
