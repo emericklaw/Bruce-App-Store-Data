@@ -1,5 +1,9 @@
 # ❗ Error Report
 
-Generated: 2025-10-11T05:48:17.306Z
+Generated: 2025-10-11T07:14:11.390Z
 
-✅ No errors or warnings detected this run!
+### 4 issues detected:
+- ⚠️  Invalid metadata.json for emericklaw/Bruce-Hello-World-Example-App: Missing required fields: name or description
+- ⚠️  Invalid metadata.json for emericklaw/Bruce-Tone-Generator-App: Missing required fields: name or description
+- ⚠️  Invalid metadata.json for emericklaw/Bruce-Flashlight-App: Missing required fields: name or description
+- ⚠️  Invalid metadata.json for emericklaw/Bruce-Device-Info-App: Missing required fields: name or description
