@@ -11,7 +11,10 @@
     },
     "metadata": {
       "app_name": "Flashlight",
-      "description": "Simple multi-colour flashlight"
+      "description": "Simple multi-colour flashlight",
+      "files": [
+        "Flashlight.json"
+      ]
     }
   }
 ]
