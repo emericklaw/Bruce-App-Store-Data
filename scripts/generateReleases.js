@@ -226,6 +226,7 @@ async function main() {
           if (!exists) {
             // Save metadata file if missing
             if (!fs.existsSync(app.metadata_file)) {
+              console.log(app.metadata_summary);
               saveMetadataFile(app.metadata_summary, app.owner);
             }
             sortedCategorizedResults[category].push(app);
