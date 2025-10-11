@@ -9,23 +9,21 @@ const headers = {
 
 // Detect if running manually (workflow_dispatch)
 const isManualRun = process.env.GITHUB_EVENT_NAME === "workflow_dispatch";
+const verbose = process.env.VERBOSE === "true";
 console.log(`🕹️ Run mode: ${isManualRun ? "Manual" : "Scheduled / Automatic"}`);
 
 // Load valid categories from categories.json
 const validCategories = JSON.parse(fs.readFileSync("categories.json", "utf-8"));
 
-// Load blocklist (simple array of wildcard strings)
+// Load blocklist (array of wildcard strings)
 let blocklist = [];
 if (fs.existsSync("blocklist.json")) {
   try {
     const raw = JSON.parse(fs.readFileSync("blocklist.json", "utf-8"));
-    if (Array.isArray(raw)) {
-      blocklist = raw;
-    } else {
-      console.warn("⚠️  blocklist.json is not an array — ignoring.");
-    }
+    if (Array.isArray(raw)) blocklist = raw;
+    else console.warn("⚠️ blocklist.json is not an array — ignoring.");
   } catch (e) {
-    console.warn("⚠️  Could not parse blocklist.json, ignoring it.");
+    console.warn("⚠️ Could not parse blocklist.json, ignoring it.");
   }
 }
 
@@ -74,11 +72,11 @@ async function main() {
   for (const repo of repos) {
     const { full_name, owner, name } = repo;
 
-    // 🔒 Check blocklist first
+    // Check blocklist first
     if (isBlocked(full_name)) {
       const msg = `🛑 Skipping ${full_name}: Blocked by blocklist.json`;
       blocklistHits.push(msg);
-      if (isManualRun) console.warn(msg);
+      if (isManualRun && verbose) console.warn(msg);
       continue;
     }
 
@@ -102,27 +100,20 @@ async function main() {
       const metadataUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${latestRelease.tag_name}/metadata.json`;
       const metadataRes = await axios.get(metadataUrl);
 
-      if (typeof metadataRes.data === "string") {
-        metadataData = JSON.parse(metadataRes.data);
-      } else if (typeof metadataRes.data === "object") {
-        metadataData = metadataRes.data;
-      } else {
-        throw new Error("Response is not valid JSON");
-      }
+      if (typeof metadataRes.data === "string") metadataData = JSON.parse(metadataRes.data);
+      else if (typeof metadataRes.data === "object") metadataData = metadataRes.data;
+      else throw new Error("Response is not valid JSON");
 
       // Validate metadata and collect all errors
       const repoErrors = [];
 
       if (!metadataData.name) repoErrors.push("Missing required field: name");
       if (!metadataData.description) repoErrors.push("Missing required field: description");
-      if (!Array.isArray(metadataData.files) || metadataData.files.length === 0) {
+      if (!Array.isArray(metadataData.files) || metadataData.files.length === 0)
         repoErrors.push("Field 'files' is missing or empty");
-      }
-      if (!metadataData.category) {
-        repoErrors.push("Missing required field: category");
-      } else if (!validCategories.includes(metadataData.category)) {
+      if (!metadataData.category) repoErrors.push("Missing required field: category");
+      else if (!validCategories.includes(metadataData.category))
         repoErrors.push(`Invalid category '${metadataData.category}'`);
-      }
 
       if (repoErrors.length > 0) {
         repoErrors.forEach(errMsg => {
@@ -132,7 +123,7 @@ async function main() {
         });
         hasError = true;
       } else {
-        console.log(`✅ Valid metadata.json`);
+        if (verbose) console.log(`✅ Valid metadata.json`);
       }
     } catch (err) {
       const msg = `⚠️  Error fetching metadata.json for ${full_name}: ${err.response?.status || err.message}`;
@@ -172,16 +163,45 @@ async function main() {
       sortedCategorizedResults[cat] = categorizedResults[cat];
     });
 
+  // Merge manual-releases.json if it exists
+  if (fs.existsSync("manual-releases.json")) {
+    try {
+      const manualData = JSON.parse(fs.readFileSync("manual-releases.json", "utf-8"));
+      for (const [category, apps] of Object.entries(manualData)) {
+        if (!sortedCategorizedResults[category]) sortedCategorizedResults[category] = [];
+
+        for (const app of apps) {
+          // Skip if same owner/repo AND metadata.name exists
+          const exists = sortedCategorizedResults[category].some(
+            a => a.owner === app.owner && a.repo === app.repo && a.metadata.name === app.metadata.name
+          );
+          if (!exists) sortedCategorizedResults[category].push(app);
+        }
+      }
+    } catch (e) {
+      console.warn("⚠️ Could not parse manual-releases.json, ignoring it.");
+    }
+  }
+
+  // Re-sort apps after merge
+  for (const cat of Object.keys(sortedCategorizedResults)) {
+    sortedCategorizedResults[cat].sort((a, b) => a.metadata.name.localeCompare(b.metadata.name));
+  }
+
+  // Sort categories alphabetically again
+  const finalSortedResults = {};
+  Object.keys(sortedCategorizedResults)
+    .sort()
+    .forEach(cat => {
+      finalSortedResults[cat] = sortedCategorizedResults[cat];
+    });
+
   // Write releases.json
-  fs.writeFileSync("releases.json", JSON.stringify(sortedCategorizedResults, null, 2));
-  console.log(`🎉 releases.json generated successfully! Categories: ${Object.keys(sortedCategorizedResults).length}`);
+  fs.writeFileSync("releases.json", JSON.stringify(finalSortedResults, null, 2));
+  console.log(`🎉 releases.json generated successfully.`);
 
   // Write ERRORS.md
-  const timestamp = new Date().toISOString();
-  const sections = [
-    `# ❗ Error Report`,
-    ``,
-  ];
+  const sections = ["# ❗ Error Report", ""];
 
   if (errors.length === 0 && (isManualRun || blocklistHits.length === 0)) {
     sections.push("✅ No errors or warnings detected");
