@@ -66,26 +66,32 @@ async function main() {
         throw new Error("Response is not valid JSON");
       }
 
-      // Validate required fields
-      if (!metadataData.name || !metadataData.description) {
-        throw new Error("Missing required fields: name or description");
-      }
+      // Validate metadata and collect all errors
+      const repoErrors = [];
 
+      if (!metadataData.name) repoErrors.push("Missing required field: name");
+      if (!metadataData.description) repoErrors.push("Missing required field: description");
       if (!Array.isArray(metadataData.files) || metadataData.files.length === 0) {
-        throw new Error("Field 'files' is missing or empty");
+        repoErrors.push("Field 'files' is missing or empty");
       }
-
       if (!metadataData.category) {
-        throw new Error("Missing required field: category");
+        repoErrors.push("Missing required field: category");
+      } else if (!validCategories.includes(metadataData.category)) {
+        repoErrors.push(`Invalid category '${metadataData.category}' not in categories.json`);
       }
 
-      if (!validCategories.includes(metadataData.category)) {
-        throw new Error(`Invalid category '${metadataData.category}' not in categories.json`);
+      if (repoErrors.length > 0) {
+        repoErrors.forEach(errMsg => {
+          const msg = `⚠️  ${full_name}: ${errMsg}`;
+          console.warn(msg);
+          errors.push(msg);
+        });
+        hasError = true;
+      } else {
+        console.log(`✅ Valid metadata.json`);
       }
-
-      console.log(`✅ Valid metadata.json`);
     } catch (err) {
-      const msg = `⚠️  Invalid metadata.json for ${full_name}: ${err.response?.status || err.message}`;
+      const msg = `⚠️  Error fetching metadata.json for ${full_name}: ${err.response?.status || err.message}`;
       console.warn(msg);
       errors.push(msg);
       hasError = true;
