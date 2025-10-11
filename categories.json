@@ -1,6 +1,14 @@
 [
   "Audio",
+  "Bluetooth",
   "Games",
-  "Utilities",
-  "Tools"
+  "GPIO",
+  "Infrared",
+  "Media",
+  "RFID",
+  "RF",
+  "Themes",
+  "Tools",
+  "USB",
+  "Utilities"
 ]
