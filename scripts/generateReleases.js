@@ -184,7 +184,7 @@ async function main() {
   ];
 
   if (errors.length === 0 && (isManualRun || blocklistHits.length === 0)) {
-    sections.push("✅ No errors or warnings detected this run!");
+    sections.push("✅ No errors or warnings detected");
   } else {
     if (errors.length > 0) {
       sections.push(`### ⚠️ ${errors.length} Metadata / Processing Issues`);
