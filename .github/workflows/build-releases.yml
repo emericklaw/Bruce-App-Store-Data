@@ -5,6 +5,9 @@ on:
     - cron: '0 0 * * *' # runs once a day at midnight UTC
   workflow_dispatch: # allows manual trigger
 
+permissions:
+  contents: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -31,6 +34,13 @@ jobs:
           # Count number of errors (lines starting with dash in ERRORS.md)
           ERRORS_COUNT=$(grep -c '^-' ERRORS.md || true)
           echo "errors_count=$ERRORS_COUNT" >> $GITHUB_OUTPUT
+
+          # Extract first 5 error lines (for preview)
+          PREVIEW=$(grep '^-' ERRORS.md | head -n 5 || true)
+          PREVIEW="${PREVIEW//'%'/'%25'}"
+          PREVIEW="${PREVIEW//$'\n'/'%0A'}"
+          PREVIEW="${PREVIEW//$'\r'/'%0D'}"
+          echo "error_preview=$PREVIEW" >> $GITHUB_OUTPUT
 
       - name: Commit and push results
         run: |
@@ -61,3 +71,15 @@ jobs:
           echo "- Total errors or warnings: **${{ steps.generator.outputs.errors_count }}**" >> $GITHUB_STEP_SUMMARY
           echo "- Files generated: \`releases.json\`, \`ERRORS.md\`" >> $GITHUB_STEP_SUMMARY
           echo "- Error report attached as an artifact named 'error-report'." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🪵 Error Preview (first 5 entries)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.generator.outputs.errors_count }}" -eq 0 ]; then
+            echo "✅ No errors or warnings this run!" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "${{ steps.generator.outputs.error_preview }}" >> $GITHUB_STEP_SUMMARY
+            if [ "${{ steps.generator.outputs.errors_count }}" -gt 5 ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "_...and more. See full ERRORS.md artifact for details._" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
