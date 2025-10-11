@@ -1,18 +1,35 @@
 [
   {
-    "repo": "Bruce-Interpreter-Flashlight-App",
+    "repo": "Bruce-Flashlight-App",
     "owner": "emericklaw",
     "latest_release": {
       "tag_name": "0.0.2",
       "name": "0.0.2",
       "published_at": "2025-10-11T05:24:41Z",
-      "html_url": "https://github.com/emericklaw/Bruce-Interpreter-Flashlight-App/releases/tag/0.0.2"
+      "html_url": "https://github.com/emericklaw/Bruce-Flashlight-App/releases/tag/0.0.2"
     },
     "metadata": {
       "app_name": "Flashlight",
       "description": "Simple multi-colour flashlight",
       "files": [
         "Flashlight.json"
+      ]
+    }
+  },
+  {
+    "repo": "Bruce-Device-Info-App",
+    "owner": "emericklaw",
+    "latest_release": {
+      "tag_name": "1.0.0",
+      "name": "1.0.0",
+      "published_at": "2025-10-11T05:30:47Z",
+      "html_url": "https://github.com/emericklaw/Bruce-Device-Info-App/releases/tag/1.0.0"
+    },
+    "metadata": {
+      "app_name": "Device Info",
+      "description": "evice information display showing hardware details and memory statistics",
+      "files": [
+        "DeviceInfo.js"
       ]
     }
   }
