@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '*/15 * * * *' # run every 15 minutes
   workflow_dispatch:
+    inputs:
+      verbose:
+        description: "Enable detailed logging output (show blocklist info)"
+        required: false
+        default: "false"
 
 permissions:
   contents: write # allow pushing commits
@@ -22,13 +27,16 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install axios
+        run: npm install axios minimatch
 
       - name: Run generator
         id: generator
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          VERBOSE: ${{ github.event.inputs.verbose }}
         run: |
+          echo "🔧 Running generateReleases.js (trigger: $GITHUB_EVENT_NAME, verbose: $VERBOSE)"
           node scripts/generateReleases.js
 
           # Count number of errors (lines starting with dash in ERRORS.md)
@@ -63,6 +71,7 @@ jobs:
         run: |
           echo "## 🧩 Release Aggregation Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Trigger: \`${{ github.event_name }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Total errors or warnings: **${{ steps.generator.outputs.errors_count }}**" >> $GITHUB_STEP_SUMMARY
           echo "- Files generated: \`releases.json\`, \`ERRORS.md\`" >> $GITHUB_STEP_SUMMARY
           echo "- Error report attached as an artifact named 'error-report'." >> $GITHUB_STEP_SUMMARY
