@@ -163,10 +163,10 @@ async function main() {
       sortedCategorizedResults[cat] = categorizedResults[cat];
     });
 
-  // Merge manual-releases.json if it exists
-  if (fs.existsSync("manual-releases.json")) {
+  // Merge releases_manual.json if it exists
+  if (fs.existsSync("releases_manual.json")) {
     try {
-      const manualData = JSON.parse(fs.readFileSync("manual-releases.json", "utf-8"));
+      const manualData = JSON.parse(fs.readFileSync("releases_manual.json", "utf-8"));
       for (const [category, apps] of Object.entries(manualData)) {
         if (!sortedCategorizedResults[category]) sortedCategorizedResults[category] = [];
 
@@ -179,7 +179,7 @@ async function main() {
         }
       }
     } catch (e) {
-      console.warn("⚠️ Could not parse manual-releases.json, ignoring it.");
+      console.warn("⚠️ Could not parse releases_manual.json, ignoring it.");
     }
   }
 
