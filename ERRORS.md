@@ -1,3 +1,4 @@
 # ❗ Error Report
 
-✅ No errors or warnings detected
+### 🛑 1 Blocked Repositories
+- 🛑 Skipping emericklaw/Bruce-Flashlight-App: Blocked by blocklist.json

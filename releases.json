@@ -78,9 +78,7 @@
       "repo": "Bruce",
       "owner": "pr3y",
       "latest_release": {
-        "tag_name": "1.0.0",
-        "name": "1.0.0",
-        "published_at": "Unknown"
+        "manual": true
       },
       "metadata": {
         "name": "WiFi Bruce Force",
