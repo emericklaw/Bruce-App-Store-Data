@@ -28,7 +28,7 @@
       "latest_release": {
         "tag_name": "1.2",
         "name": "1.2",
-        "published_at": "2025-10-11T21:59:19Z"
+        "published_at": "2025-10-11T22:20:19Z"
       },
       "metadata": {
         "name": "Bruce Theme - 105px GIF",
@@ -37,67 +37,67 @@
         "files": [
           {
             "source": "GIF-105px/Bruce_Theme.json",
-            "destination": "/Themes/Bruce_Theme/Bruce_Theme.json"
+            "destination": "Bruce-Theme/Bruce_Theme.json"
           },
           {
             "source": "GIF-105px/BLE.gif",
-            "destination": "/Themes/Bruce-Theme/BLE.gif"
+            "destination": "Bruce-Theme/BLE.gif"
           },
           {
             "source": "GIF-105px/Clock.gif",
-            "destination": "/Themes/Bruce-Theme/Clock.gif"
+            "destination": "Bruce-Theme/Clock.gif"
           },
           {
             "source": "GIF-105px/Config.gif",
-            "destination": "/Themes/Bruce-Theme/Config.gif"
+            "destination": "Bruce-Theme/Config.gif"
           },
           {
             "source": "GIF-105px/Connect.gif",
-            "destination": "/Themes/Bruce-Theme/Connect.gif"
+            "destination": "Bruce-Theme/Connect.gif"
           },
           {
             "source": "GIF-105px/Ethernet.gif",
-            "destination": "/Themes/Bruce-Theme/Ethernet.gif"
+            "destination": "Bruce-Theme/Ethernet.gif"
           },
           {
             "source": "GIF-105px/FM.gif",
-            "destination": "/Themes/Bruce-Theme/FM.gif"
+            "destination": "Bruce-Theme/FM.gif"
           },
           {
             "source": "GIF-105px/Files.gif",
-            "destination": "/Themes/Bruce-Theme/Files.gif"
+            "destination": "Bruce-Theme/Files.gif"
           },
           {
             "source": "GIF-105px/GPS.gif",
-            "destination": "/Themes/Bruce-Theme/GPS.gif"
+            "destination": "Bruce-Theme/GPS.gif"
           },
           {
             "source": "GIF-105px/IR.gif",
-            "destination": "/Themes/Bruce-Theme/IR.gif"
+            "destination": "Bruce-Theme/IR.gif"
           },
           {
             "source": "GIF-105px/JSInterpreter.gif",
-            "destination": "/Themes/Bruce-Theme/JSInterpreter.gif"
+            "destination": "Bruce-Theme/JSInterpreter.gif"
           },
           {
             "source": "GIF-105px/NRF24.gif",
-            "destination": "/Themes/Bruce-Theme/NRF24.gif"
+            "destination": "Bruce-Theme/NRF24.gif"
           },
           {
             "source": "GIF-105px/Others.gif",
-            "destination": "/Themes/Bruce-Theme/Others.gif"
+            "destination": "Bruce-Theme/Others.gif"
           },
           {
             "source": "GIF-105px/RF.gif",
-            "destination": "/Themes/Bruce-Theme/RF.gif"
+            "destination": "Bruce-Theme/RF.gif"
           },
           {
             "source": "GIF-105px/RFID.gif",
-            "destination": "/Themes/Bruce-Theme/RFID.gif"
+            "destination": "Bruce-Theme/RFID.gif"
           },
           {
             "source": "GIF-105px/WiFi.gif",
-            "destination": "/Themes/Bruce-Theme/WiFi.gif"
+            "destination": "Bruce-Theme/WiFi.gif"
           }
         ]
       }
@@ -108,7 +108,7 @@
       "latest_release": {
         "tag_name": "1.2",
         "name": "1.2",
-        "published_at": "2025-10-11T21:59:19Z"
+        "published_at": "2025-10-11T22:20:19Z"
       },
       "metadata": {
         "name": "Bruce Theme - 105px PNG",
@@ -117,67 +117,67 @@
         "files": [
           {
             "source": "PNG-105px/Bruce_Theme.json",
-            "destination": "/Themes/Bruce_Theme/Bruce_Theme.json"
+            "destination": "Bruce-Theme/Bruce_Theme.json"
           },
           {
             "source": "PNG-105px/BLE.png",
-            "destination": "/Themes/Bruce-Theme/BLE.png"
+            "destination": "Bruce-Theme/BLE.png"
           },
           {
             "source": "PNG-105px/Clock.png",
-            "destination": "/Themes/Bruce-Theme/Clock.png"
+            "destination": "Bruce-Theme/Clock.png"
           },
           {
             "source": "PNG-105px/Config.png",
-            "destination": "/Themes/Bruce-Theme/Config.png"
+            "destination": "Bruce-Theme/Config.png"
           },
           {
             "source": "PNG-105px/Connect.png",
-            "destination": "/Themes/Bruce-Theme/Connect.png"
+            "destination": "Bruce-Theme/Connect.png"
           },
           {
             "source": "PNG-105px/Ethernet.png",
-            "destination": "/Themes/Bruce-Theme/Ethernet.png"
+            "destination": "Bruce-Theme/Ethernet.png"
           },
           {
             "source": "PNG-105px/FM.png",
-            "destination": "/Themes/Bruce-Theme/FM.png"
+            "destination": "Bruce-Theme/FM.png"
           },
           {
             "source": "PNG-105px/Files.png",
-            "destination": "/Themes/Bruce-Theme/Files.png"
+            "destination": "Bruce-Theme/Files.png"
           },
           {
             "source": "PNG-105px/GPS.png",
-            "destination": "/Themes/Bruce-Theme/GPS.png"
+            "destination": "Bruce-Theme/GPS.png"
           },
           {
             "source": "PNG-105px/IR.png",
-            "destination": "/Themes/Bruce-Theme/IR.png"
+            "destination": "Bruce-Theme/IR.png"
           },
           {
             "source": "PNG-105px/JSInterpreter.png",
-            "destination": "/Themes/Bruce-Theme/JSInterpreter.png"
+            "destination": "Bruce-Theme/JSInterpreter.png"
           },
           {
             "source": "PNG-105px/NRF24.png",
-            "destination": "/Themes/Bruce-Theme/NRF24.png"
+            "destination": "Bruce-Theme/NRF24.png"
           },
           {
             "source": "PNG-105px/Others.png",
-            "destination": "/Themes/Bruce-Theme/Others.png"
+            "destination": "Bruce-Theme/Others.png"
           },
           {
             "source": "PNG-105px/RF.png",
-            "destination": "/Themes/Bruce-Theme/RF.png"
+            "destination": "Bruce-Theme/RF.png"
           },
           {
             "source": "PNG-105px/RFID.png",
-            "destination": "/Themes/Bruce-Theme/RFID.png"
+            "destination": "Bruce-Theme/RFID.png"
           },
           {
             "source": "PNG-105px/WiFi.png",
-            "destination": "/Themes/Bruce-Theme/WiFi.png"
+            "destination": "Bruce-Theme/WiFi.png"
           }
         ]
       }
@@ -188,7 +188,7 @@
       "latest_release": {
         "tag_name": "1.2",
         "name": "1.2",
-        "published_at": "2025-10-11T21:59:19Z"
+        "published_at": "2025-10-11T22:20:19Z"
       },
       "metadata": {
         "name": "Bruce Theme - 140px GIF",
@@ -197,67 +197,67 @@
         "files": [
           {
             "source": "GIF-140px/Bruce_Theme.json",
-            "destination": "/Themes/Bruce_Theme/Bruce_Theme.json"
+            "destination": "Bruce-Theme/Bruce_Theme.json"
           },
           {
             "source": "GIF-140px/BLE.gif",
-            "destination": "/Themes/Bruce-Theme/BLE.gif"
+            "destination": "Bruce-Theme/BLE.gif"
           },
           {
             "source": "GIF-140px/Clock.gif",
-            "destination": "/Themes/Bruce-Theme/Clock.gif"
+            "destination": "Bruce-Theme/Clock.gif"
           },
           {
             "source": "GIF-140px/Config.gif",
-            "destination": "/Themes/Bruce-Theme/Config.gif"
+            "destination": "Bruce-Theme/Config.gif"
           },
           {
             "source": "GIF-140px/Connect.gif",
-            "destination": "/Themes/Bruce-Theme/Connect.gif"
+            "destination": "Bruce-Theme/Connect.gif"
           },
           {
             "source": "GIF-140px/Ethernet.gif",
-            "destination": "/Themes/Bruce-Theme/Ethernet.gif"
+            "destination": "Bruce-Theme/Ethernet.gif"
           },
           {
             "source": "GIF-140px/FM.gif",
-            "destination": "/Themes/Bruce-Theme/FM.gif"
+            "destination": "Bruce-Theme/FM.gif"
           },
           {
             "source": "GIF-140px/Files.gif",
-            "destination": "/Themes/Bruce-Theme/Files.gif"
+            "destination": "Bruce-Theme/Files.gif"
           },
           {
             "source": "GIF-140px/GPS.gif",
-            "destination": "/Themes/Bruce-Theme/GPS.gif"
+            "destination": "Bruce-Theme/GPS.gif"
           },
           {
             "source": "GIF-140px/IR.gif",
-            "destination": "/Themes/Bruce-Theme/IR.gif"
+            "destination": "Bruce-Theme/IR.gif"
           },
           {
             "source": "GIF-140px/JSInterpreter.gif",
-            "destination": "/Themes/Bruce-Theme/JSInterpreter.gif"
+            "destination": "Bruce-Theme/JSInterpreter.gif"
           },
           {
             "source": "GIF-140px/NRF24.gif",
-            "destination": "/Themes/Bruce-Theme/NRF24.gif"
+            "destination": "Bruce-Theme/NRF24.gif"
           },
           {
             "source": "GIF-140px/Others.gif",
-            "destination": "/Themes/Bruce-Theme/Others.gif"
+            "destination": "Bruce-Theme/Others.gif"
           },
           {
             "source": "GIF-140px/RF.gif",
-            "destination": "/Themes/Bruce-Theme/RF.gif"
+            "destination": "Bruce-Theme/RF.gif"
           },
           {
             "source": "GIF-140px/RFID.gif",
-            "destination": "/Themes/Bruce-Theme/RFID.gif"
+            "destination": "Bruce-Theme/RFID.gif"
           },
           {
             "source": "GIF-140px/WiFi.gif",
-            "destination": "/Themes/Bruce-Theme/WiFi.gif"
+            "destination": "Bruce-Theme/WiFi.gif"
           }
         ]
       }
@@ -268,7 +268,7 @@
       "latest_release": {
         "tag_name": "1.2",
         "name": "1.2",
-        "published_at": "2025-10-11T21:59:19Z"
+        "published_at": "2025-10-11T22:20:19Z"
       },
       "metadata": {
         "name": "Bruce Theme - 140px PNG",
@@ -277,67 +277,67 @@
         "files": [
           {
             "source": "PNG-140px/Bruce_Theme.json",
-            "destination": "/Themes/Bruce_Theme/Bruce_Theme.json"
+            "destination": "Bruce-Theme/Bruce_Theme.json"
           },
           {
             "source": "PNG-140px/BLE.png",
-            "destination": "/Themes/Bruce-Theme/BLE.png"
+            "destination": "Bruce-Theme/BLE.png"
           },
           {
             "source": "PNG-140px/Clock.png",
-            "destination": "/Themes/Bruce-Theme/Clock.png"
+            "destination": "Bruce-Theme/Clock.png"
           },
           {
             "source": "PNG-140px/Config.png",
-            "destination": "/Themes/Bruce-Theme/Config.png"
+            "destination": "Bruce-Theme/Config.png"
           },
           {
             "source": "PNG-140px/Connect.png",
-            "destination": "/Themes/Bruce-Theme/Connect.png"
+            "destination": "Bruce-Theme/Connect.png"
           },
           {
             "source": "PNG-140px/Ethernet.png",
-            "destination": "/Themes/Bruce-Theme/Ethernet.png"
+            "destination": "Bruce-Theme/Ethernet.png"
           },
           {
             "source": "PNG-140px/FM.png",
-            "destination": "/Themes/Bruce-Theme/FM.png"
+            "destination": "Bruce-Theme/FM.png"
           },
           {
             "source": "PNG-140px/Files.png",
-            "destination": "/Themes/Bruce-Theme/Files.png"
+            "destination": "Bruce-Theme/Files.png"
           },
           {
             "source": "PNG-140px/GPS.png",
-            "destination": "/Themes/Bruce-Theme/GPS.png"
+            "destination": "Bruce-Theme/GPS.png"
           },
           {
             "source": "PNG-140px/IR.png",
-            "destination": "/Themes/Bruce-Theme/IR.png"
+            "destination": "Bruce-Theme/IR.png"
           },
           {
             "source": "PNG-140px/JSInterpreter.png",
-            "destination": "/Themes/Bruce-Theme/JSInterpreter.png"
+            "destination": "Bruce-Theme/JSInterpreter.png"
           },
           {
             "source": "PNG-140px/NRF24.png",
-            "destination": "/Themes/Bruce-Theme/NRF24.png"
+            "destination": "Bruce-Theme/NRF24.png"
           },
           {
             "source": "PNG-140px/Others.png",
-            "destination": "/Themes/Bruce-Theme/Others.png"
+            "destination": "Bruce-Theme/Others.png"
           },
           {
             "source": "PNG-140px/RF.png",
-            "destination": "/Themes/Bruce-Theme/RF.png"
+            "destination": "Bruce-Theme/RF.png"
           },
           {
             "source": "PNG-140px/RFID.png",
-            "destination": "/Themes/Bruce-Theme/RFID.png"
+            "destination": "Bruce-Theme/RFID.png"
           },
           {
             "source": "PNG-140px/WiFi.png",
-            "destination": "/Themes/Bruce-Theme/WiFi.png"
+            "destination": "Bruce-Theme/WiFi.png"
           }
         ]
       }
@@ -348,7 +348,7 @@
       "latest_release": {
         "tag_name": "1.2",
         "name": "1.2",
-        "published_at": "2025-10-11T21:59:19Z"
+        "published_at": "2025-10-11T22:20:19Z"
       },
       "metadata": {
         "name": "Bruce Theme - 180px GIF",
@@ -357,67 +357,67 @@
         "files": [
           {
             "source": "GIF-180px/Bruce_Theme.json",
-            "destination": "/Themes/Bruce_Theme/Bruce_Theme.json"
+            "destination": "Bruce-Theme/Bruce_Theme.json"
           },
           {
             "source": "GIF-180px/BLE.gif",
-            "destination": "/Themes/Bruce-Theme/BLE.gif"
+            "destination": "Bruce-Theme/BLE.gif"
           },
           {
             "source": "GIF-180px/Clock.gif",
-            "destination": "/Themes/Bruce-Theme/Clock.gif"
+            "destination": "Bruce-Theme/Clock.gif"
           },
           {
             "source": "GIF-180px/Config.gif",
-            "destination": "/Themes/Bruce-Theme/Config.gif"
+            "destination": "Bruce-Theme/Config.gif"
           },
           {
             "source": "GIF-180px/Connect.gif",
-            "destination": "/Themes/Bruce-Theme/Connect.gif"
+            "destination": "Bruce-Theme/Connect.gif"
           },
           {
             "source": "GIF-180px/Ethernet.gif",
-            "destination": "/Themes/Bruce-Theme/Ethernet.gif"
+            "destination": "Bruce-Theme/Ethernet.gif"
           },
           {
             "source": "GIF-180px/FM.gif",
-            "destination": "/Themes/Bruce-Theme/FM.gif"
+            "destination": "Bruce-Theme/FM.gif"
           },
           {
             "source": "GIF-180px/Files.gif",
-            "destination": "/Themes/Bruce-Theme/Files.gif"
+            "destination": "Bruce-Theme/Files.gif"
           },
           {
             "source": "GIF-180px/GPS.gif",
-            "destination": "/Themes/Bruce-Theme/GPS.gif"
+            "destination": "Bruce-Theme/GPS.gif"
           },
           {
             "source": "GIF-180px/IR.gif",
-            "destination": "/Themes/Bruce-Theme/IR.gif"
+            "destination": "Bruce-Theme/IR.gif"
           },
           {
             "source": "GIF-180px/JSInterpreter.gif",
-            "destination": "/Themes/Bruce-Theme/JSInterpreter.gif"
+            "destination": "Bruce-Theme/JSInterpreter.gif"
           },
           {
             "source": "GIF-180px/NRF24.gif",
-            "destination": "/Themes/Bruce-Theme/NRF24.gif"
+            "destination": "Bruce-Theme/NRF24.gif"
           },
           {
             "source": "GIF-180px/Others.gif",
-            "destination": "/Themes/Bruce-Theme/Others.gif"
+            "destination": "Bruce-Theme/Others.gif"
           },
           {
             "source": "GIF-180px/RF.gif",
-            "destination": "/Themes/Bruce-Theme/RF.gif"
+            "destination": "Bruce-Theme/RF.gif"
           },
           {
             "source": "GIF-180px/RFID.gif",
-            "destination": "/Themes/Bruce-Theme/RFID.gif"
+            "destination": "Bruce-Theme/RFID.gif"
           },
           {
             "source": "GIF-180px/WiFi.gif",
-            "destination": "/Themes/Bruce-Theme/WiFi.gif"
+            "destination": "Bruce-Theme/WiFi.gif"
           }
         ]
       }
@@ -428,7 +428,7 @@
       "latest_release": {
         "tag_name": "1.2",
         "name": "1.2",
-        "published_at": "2025-10-11T21:59:19Z"
+        "published_at": "2025-10-11T22:20:19Z"
       },
       "metadata": {
         "name": "Bruce Theme - 180px PNG",
@@ -437,67 +437,67 @@
         "files": [
           {
             "source": "PNG-180px/Bruce_Theme.json",
-            "destination": "/Themes/Bruce_Theme/Bruce_Theme.json"
+            "destination": "Bruce-Theme/Bruce_Theme.json"
           },
           {
             "source": "PNG-180px/BLE.png",
-            "destination": "/Themes/Bruce-Theme/BLE.png"
+            "destination": "Bruce-Theme/BLE.png"
           },
           {
             "source": "PNG-180px/Clock.png",
-            "destination": "/Themes/Bruce-Theme/Clock.png"
+            "destination": "Bruce-Theme/Clock.png"
           },
           {
             "source": "PNG-180px/Config.png",
-            "destination": "/Themes/Bruce-Theme/Config.png"
+            "destination": "Bruce-Theme/Config.png"
           },
           {
             "source": "PNG-180px/Connect.png",
-            "destination": "/Themes/Bruce-Theme/Connect.png"
+            "destination": "Bruce-Theme/Connect.png"
           },
           {
             "source": "PNG-180px/Ethernet.png",
-            "destination": "/Themes/Bruce-Theme/Ethernet.png"
+            "destination": "Bruce-Theme/Ethernet.png"
           },
           {
             "source": "PNG-180px/FM.png",
-            "destination": "/Themes/Bruce-Theme/FM.png"
+            "destination": "Bruce-Theme/FM.png"
           },
           {
             "source": "PNG-180px/Files.png",
-            "destination": "/Themes/Bruce-Theme/Files.png"
+            "destination": "Bruce-Theme/Files.png"
           },
           {
             "source": "PNG-180px/GPS.png",
-            "destination": "/Themes/Bruce-Theme/GPS.png"
+            "destination": "Bruce-Theme/GPS.png"
           },
           {
             "source": "PNG-180px/IR.png",
-            "destination": "/Themes/Bruce-Theme/IR.png"
+            "destination": "Bruce-Theme/IR.png"
           },
           {
             "source": "PNG-180px/JSInterpreter.png",
-            "destination": "/Themes/Bruce-Theme/JSInterpreter.png"
+            "destination": "Bruce-Theme/JSInterpreter.png"
           },
           {
             "source": "PNG-180px/NRF24.png",
-            "destination": "/Themes/Bruce-Theme/NRF24.png"
+            "destination": "Bruce-Theme/NRF24.png"
           },
           {
             "source": "PNG-180px/Others.png",
-            "destination": "/Themes/Bruce-Theme/Others.png"
+            "destination": "Bruce-Theme/Others.png"
           },
           {
             "source": "PNG-180px/RF.png",
-            "destination": "/Themes/Bruce-Theme/RF.png"
+            "destination": "Bruce-Theme/RF.png"
           },
           {
             "source": "PNG-180px/RFID.png",
-            "destination": "/Themes/Bruce-Theme/RFID.png"
+            "destination": "Bruce-Theme/RFID.png"
           },
           {
             "source": "PNG-180px/WiFi.png",
-            "destination": "/Themes/Bruce-Theme/WiFi.png"
+            "destination": "Bruce-Theme/WiFi.png"
           }
         ]
       }
@@ -508,7 +508,7 @@
       "latest_release": {
         "tag_name": "1.2",
         "name": "1.2",
-        "published_at": "2025-10-11T21:59:19Z"
+        "published_at": "2025-10-11T22:20:19Z"
       },
       "metadata": {
         "name": "Bruce Theme - 192px GIF",
@@ -517,67 +517,67 @@
         "files": [
           {
             "source": "GIF-192px/Bruce_Theme.json",
-            "destination": "/Themes/Bruce_Theme/Bruce_Theme.json"
+            "destination": "Bruce-Theme/Bruce_Theme.json"
           },
           {
             "source": "GIF-192px/BLE.gif",
-            "destination": "/Themes/Bruce-Theme/BLE.gif"
+            "destination": "Bruce-Theme/BLE.gif"
           },
           {
             "source": "GIF-192px/Clock.gif",
-            "destination": "/Themes/Bruce-Theme/Clock.gif"
+            "destination": "Bruce-Theme/Clock.gif"
           },
           {
             "source": "GIF-192px/Config.gif",
-            "destination": "/Themes/Bruce-Theme/Config.gif"
+            "destination": "Bruce-Theme/Config.gif"
           },
           {
             "source": "GIF-192px/Connect.gif",
-            "destination": "/Themes/Bruce-Theme/Connect.gif"
+            "destination": "Bruce-Theme/Connect.gif"
           },
           {
             "source": "GIF-192px/Ethernet.gif",
-            "destination": "/Themes/Bruce-Theme/Ethernet.gif"
+            "destination": "Bruce-Theme/Ethernet.gif"
           },
           {
             "source": "GIF-192px/FM.gif",
-            "destination": "/Themes/Bruce-Theme/FM.gif"
+            "destination": "Bruce-Theme/FM.gif"
           },
           {
             "source": "GIF-192px/Files.gif",
-            "destination": "/Themes/Bruce-Theme/Files.gif"
+            "destination": "Bruce-Theme/Files.gif"
           },
           {
             "source": "GIF-192px/GPS.gif",
-            "destination": "/Themes/Bruce-Theme/GPS.gif"
+            "destination": "Bruce-Theme/GPS.gif"
           },
           {
             "source": "GIF-192px/IR.gif",
-            "destination": "/Themes/Bruce-Theme/IR.gif"
+            "destination": "Bruce-Theme/IR.gif"
           },
           {
             "source": "GIF-192px/JSInterpreter.gif",
-            "destination": "/Themes/Bruce-Theme/JSInterpreter.gif"
+            "destination": "Bruce-Theme/JSInterpreter.gif"
           },
           {
             "source": "GIF-192px/NRF24.gif",
-            "destination": "/Themes/Bruce-Theme/NRF24.gif"
+            "destination": "Bruce-Theme/NRF24.gif"
           },
           {
             "source": "GIF-192px/Others.gif",
-            "destination": "/Themes/Bruce-Theme/Others.gif"
+            "destination": "Bruce-Theme/Others.gif"
           },
           {
             "source": "GIF-192px/RF.gif",
-            "destination": "/Themes/Bruce-Theme/RF.gif"
+            "destination": "Bruce-Theme/RF.gif"
           },
           {
             "source": "GIF-192px/RFID.gif",
-            "destination": "/Themes/Bruce-Theme/RFID.gif"
+            "destination": "Bruce-Theme/RFID.gif"
           },
           {
             "source": "GIF-192px/WiFi.gif",
-            "destination": "/Themes/Bruce-Theme/WiFi.gif"
+            "destination": "Bruce-Theme/WiFi.gif"
           }
         ]
       }
@@ -588,7 +588,7 @@
       "latest_release": {
         "tag_name": "1.2",
         "name": "1.2",
-        "published_at": "2025-10-11T21:59:19Z"
+        "published_at": "2025-10-11T22:20:19Z"
       },
       "metadata": {
         "name": "Bruce Theme - 192px PNG",
@@ -597,67 +597,67 @@
         "files": [
           {
             "source": "PNG-192px/Bruce_Theme.json",
-            "destination": "/Themes/Bruce_Theme/Bruce_Theme.json"
+            "destination": "Bruce-Theme/Bruce_Theme.json"
           },
           {
             "source": "PNG-192px/BLE.png",
-            "destination": "/Themes/Bruce-Theme/BLE.png"
+            "destination": "Bruce-Theme/BLE.png"
           },
           {
             "source": "PNG-192px/Clock.png",
-            "destination": "/Themes/Bruce-Theme/Clock.png"
+            "destination": "Bruce-Theme/Clock.png"
           },
           {
             "source": "PNG-192px/Config.png",
-            "destination": "/Themes/Bruce-Theme/Config.png"
+            "destination": "Bruce-Theme/Config.png"
           },
           {
             "source": "PNG-192px/Connect.png",
-            "destination": "/Themes/Bruce-Theme/Connect.png"
+            "destination": "Bruce-Theme/Connect.png"
           },
           {
             "source": "PNG-192px/Ethernet.png",
-            "destination": "/Themes/Bruce-Theme/Ethernet.png"
+            "destination": "Bruce-Theme/Ethernet.png"
           },
           {
             "source": "PNG-192px/FM.png",
-            "destination": "/Themes/Bruce-Theme/FM.png"
+            "destination": "Bruce-Theme/FM.png"
           },
           {
             "source": "PNG-192px/Files.png",
-            "destination": "/Themes/Bruce-Theme/Files.png"
+            "destination": "Bruce-Theme/Files.png"
           },
           {
             "source": "PNG-192px/GPS.png",
-            "destination": "/Themes/Bruce-Theme/GPS.png"
+            "destination": "Bruce-Theme/GPS.png"
           },
           {
             "source": "PNG-192px/IR.png",
-            "destination": "/Themes/Bruce-Theme/IR.png"
+            "destination": "Bruce-Theme/IR.png"
           },
           {
             "source": "PNG-192px/JSInterpreter.png",
-            "destination": "/Themes/Bruce-Theme/JSInterpreter.png"
+            "destination": "Bruce-Theme/JSInterpreter.png"
           },
           {
             "source": "PNG-192px/NRF24.png",
-            "destination": "/Themes/Bruce-Theme/NRF24.png"
+            "destination": "Bruce-Theme/NRF24.png"
           },
           {
             "source": "PNG-192px/Others.png",
-            "destination": "/Themes/Bruce-Theme/Others.png"
+            "destination": "Bruce-Theme/Others.png"
           },
           {
             "source": "PNG-192px/RF.png",
-            "destination": "/Themes/Bruce-Theme/RF.png"
+            "destination": "Bruce-Theme/RF.png"
           },
           {
             "source": "PNG-192px/RFID.png",
-            "destination": "/Themes/Bruce-Theme/RFID.png"
+            "destination": "Bruce-Theme/RFID.png"
           },
           {
             "source": "PNG-192px/WiFi.png",
-            "destination": "/Themes/Bruce-Theme/WiFi.png"
+            "destination": "Bruce-Theme/WiFi.png"
           }
         ]
       }
