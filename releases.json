@@ -72,5 +72,24 @@
         ]
       }
     }
+  ],
+  "WiFi": [
+    {
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "latest_release": {
+        "tag_name": "manual",
+        "name": "manual",
+        "published_at": "Unknown"
+      },
+      "metadata": {
+        "name": "WiFi Bruce Force",
+        "description": "Brute force WiFi passwords with a password list",
+        "category": "WiFi",
+        "files": [
+          "wifi_brute.js"
+        ]
+      }
+    }
   ]
 }
