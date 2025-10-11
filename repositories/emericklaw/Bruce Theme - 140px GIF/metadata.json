@@ -1,0 +1,71 @@
+{
+  "name": "Bruce Theme - 140px GIF",
+  "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+  "category": "Themes",
+  "files": [
+    {
+      "source": "GIF-140px/Bruce_Theme.json",
+      "destination": "Bruce-Theme/Bruce_Theme.json"
+    },
+    {
+      "source": "GIF-140px/BLE.gif",
+      "destination": "Bruce-Theme/BLE.gif"
+    },
+    {
+      "source": "GIF-140px/Clock.gif",
+      "destination": "Bruce-Theme/Clock.gif"
+    },
+    {
+      "source": "GIF-140px/Config.gif",
+      "destination": "Bruce-Theme/Config.gif"
+    },
+    {
+      "source": "GIF-140px/Connect.gif",
+      "destination": "Bruce-Theme/Connect.gif"
+    },
+    {
+      "source": "GIF-140px/Ethernet.gif",
+      "destination": "Bruce-Theme/Ethernet.gif"
+    },
+    {
+      "source": "GIF-140px/FM.gif",
+      "destination": "Bruce-Theme/FM.gif"
+    },
+    {
+      "source": "GIF-140px/Files.gif",
+      "destination": "Bruce-Theme/Files.gif"
+    },
+    {
+      "source": "GIF-140px/GPS.gif",
+      "destination": "Bruce-Theme/GPS.gif"
+    },
+    {
+      "source": "GIF-140px/IR.gif",
+      "destination": "Bruce-Theme/IR.gif"
+    },
+    {
+      "source": "GIF-140px/JSInterpreter.gif",
+      "destination": "Bruce-Theme/JSInterpreter.gif"
+    },
+    {
+      "source": "GIF-140px/NRF24.gif",
+      "destination": "Bruce-Theme/NRF24.gif"
+    },
+    {
+      "source": "GIF-140px/Others.gif",
+      "destination": "Bruce-Theme/Others.gif"
+    },
+    {
+      "source": "GIF-140px/RF.gif",
+      "destination": "Bruce-Theme/RF.gif"
+    },
+    {
+      "source": "GIF-140px/RFID.gif",
+      "destination": "Bruce-Theme/RFID.gif"
+    },
+    {
+      "source": "GIF-140px/WiFi.gif",
+      "destination": "Bruce-Theme/WiFi.gif"
+    }
+  ]
+}

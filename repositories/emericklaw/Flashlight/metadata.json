@@ -1,0 +1,11 @@
+{
+  "name": "Flashlight",
+  "description": "Simple multi-colour flashlight",
+  "category": "Utilities",
+  "files": [
+    {
+      "source": "Flashlight.js",
+      "destination": "Flashlight.js"
+    }
+  ]
+}
