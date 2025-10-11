@@ -203,7 +203,7 @@ async function main() {
   // Write ERRORS.md
   const sections = ["# ❗ Error Report", ""];
 
-  if (errors.length === 0 && (isManualRun || blocklistHits.length === 0)) {
+  if (errors.length === 0 && (!isManualRun || blocklistHits.length === 0)) {
     sections.push("✅ No errors or warnings detected");
   } else {
     if (errors.length > 0) {
