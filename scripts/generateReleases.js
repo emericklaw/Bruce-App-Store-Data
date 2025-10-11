@@ -39,24 +39,24 @@ async function main() {
     const defaultBranch = repo.default_branch || "main";
     console.log(`➡️  Processing ${full_name} (default branch: ${defaultBranch})...`);
 
-    let versionData = null;
+    let metadataData = null;
     let latestRelease = null;
     let hasError = false;
 
-    // Try to fetch version.json
+    // Try to fetch metadata.json
     try {
-      const versionUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${defaultBranch}/version.json`;
-      const versionRes = await axios.get(versionUrl);
-      versionData = JSON.parse(versionRes.data);
-      console.log(`✅ Found version.json`);
+      const metadataUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${defaultBranch}/metadata.json`;
+      const metadataRes = await axios.get(metadataUrl);
+      metadataData = JSON.parse(metadataRes.data);
+      console.log(`✅ Found metadata.json`);
     } catch (err) {
-      const msg = `⚠️  No version.json in ${full_name} (${err.response?.status || err.message})`;
+      const msg = `⚠️  No metadata.json in ${full_name} (${err.response?.status || err.message})`;
       console.warn(msg);
       errors.push(msg);
       hasError = true;
     }
 
-    // Try to fetch latest release (only if version.json succeeded)
+    // Try to fetch latest release (only if metadata.json succeeded)
     if (!hasError) {
       try {
         const releaseUrl = `https://api.github.com/repos/${owner.login}/${name}/releases/latest`;
@@ -92,7 +92,7 @@ async function main() {
       owner: owner.login,
       default_branch: defaultBranch,
       latest_release: latestRelease,
-      version: versionData,
+      metadata: metadataData,
     });
 
     console.log(""); // blank line for readability
