@@ -193,7 +193,7 @@ async function main() {
       sections.push(errors.map(e => `- ${e}`).join("\n"));
       sections.push("");
     }
-    if (blocklistHits.length > 0) {
+    if (blocklistHits.length > 0 && isManualRun) {
       sections.push(`### 🛑 ${blocklistHits.length} Blocked Repositories`);
       sections.push(blocklistHits.map(e => `- ${e}`).join("\n"));
     }
