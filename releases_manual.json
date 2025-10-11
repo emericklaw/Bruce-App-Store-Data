@@ -4,8 +4,8 @@
       "repo": "Bruce",
       "owner": "pr3y",
       "latest_release": {
-        "tag_name": "manual",
-        "name": "manual",
+        "tag_name": "1.0.0",
+        "name": "1.0.0",
         "published_at": "Unknown"
       },
       "metadata": {
@@ -13,7 +13,10 @@
         "description": "Brute force WiFi passwords with a password list",
         "category": "WiFi",
         "files": [
-          "wifi_brute.js"
+          {
+            "source": "sd_files/interpreter/wifi_brute.js",
+            "destination": "WiFiBruceForce.js"
+          }
         ]
       }
     }
