@@ -183,7 +183,7 @@ async function main() {
     ``,
   ];
 
-  if (errors.length === 0 && (isManualRun || blocklistHits.length === 0) {
+  if (errors.length === 0 && (isManualRun || blocklistHits.length === 0)) {
     sections.push("✅ No errors or warnings detected this run!");
   } else {
     if (errors.length > 0) {
