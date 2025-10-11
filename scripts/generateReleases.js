@@ -43,11 +43,20 @@ async function main() {
     let latestRelease = null;
     let hasError = false;
 
-    // Try to fetch metadata.json
+    // Fetch metadata.json
     try {
       const metadataUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${defaultBranch}/metadata.json`;
       const metadataRes = await axios.get(metadataUrl);
-      metadataData = JSON.parse(metadataRes.data);
+
+      // Ensure response is parseable JSON
+      if (typeof metadataRes.data === "string") {
+        metadataData = JSON.parse(metadataRes.data);
+      } else if (typeof metadataRes.data === "object") {
+        metadataData = metadataRes.data;
+      } else {
+        throw new Error("Response is not valid JSON");
+      }
+
       console.log(`✅ Found metadata.json`);
     } catch (err) {
       const msg = `⚠️  No metadata.json in ${full_name} (${err.response?.status || err.message})`;
@@ -56,7 +65,7 @@ async function main() {
       hasError = true;
     }
 
-    // Try to fetch latest release (only if metadata.json succeeded)
+    // Fetch latest release (only if metadata.json succeeded)
     if (!hasError) {
       try {
         const releaseUrl = `https://api.github.com/repos/${owner.login}/${name}/releases/latest`;
@@ -82,6 +91,7 @@ async function main() {
       }
     }
 
+    // Only include repos with no errors
     if (hasError) {
       console.log(`🚫 Skipping ${full_name} due to errors.\n`);
       continue;
@@ -92,7 +102,7 @@ async function main() {
       owner: owner.login,
       default_branch: defaultBranch,
       latest_release: latestRelease,
-      metadata: metadataData,
+      metadata: metadataData
     });
 
     console.log(""); // blank line for readability
