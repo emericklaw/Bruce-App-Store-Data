@@ -14,7 +14,7 @@
         "category": "WiFi",
         "files": [
           {
-            "source": "sd_files/interpreter/wifi_brute.js",
+            "source": "main/sd_files/interpreter/wifi_brute.js",
             "destination": "WiFiBruceForce.js"
           }
         ]
