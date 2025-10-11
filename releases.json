@@ -39,12 +39,12 @@
     "latest_release": {
       "tag_name": "1.0.0",
       "name": "1.0.0",
-      "published_at": "2025-10-11T05:30:47Z",
+      "published_at": "2025-10-11T05:47:45Z",
       "html_url": "https://github.com/emericklaw/Bruce-Device-Info-App/releases/tag/1.0.0"
     },
     "metadata": {
       "app_name": "Device Info",
-      "description": "evice information display showing hardware details and memory statistics",
+      "description": "Device information display showing hardware details and memory statistics",
       "files": [
         "DeviceInfo.js"
       ]
