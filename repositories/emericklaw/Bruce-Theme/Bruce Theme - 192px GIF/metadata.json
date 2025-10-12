@@ -1,70 +1,75 @@
 {
-  "name": "Bruce Theme - 105px GIF",
-  "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+  "name": "Bruce Theme - 192px GIF",
   "category": "Themes",
+  "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+  "version": "1.2",
+  "tag": "1.2",
+  "published_at": "2025-10-11T22:20:19Z",
+  "owner": "emericklaw",
+  "repo": "Bruce-Theme",
   "files": [
     {
-      "source": "GIF-105px/Bruce_Theme.json",
+      "source": "GIF-192px/Bruce_Theme.json",
       "destination": "Bruce-Theme/Bruce_Theme.json"
     },
     {
-      "source": "GIF-105px/BLE.gif",
+      "source": "GIF-192px/BLE.gif",
       "destination": "Bruce-Theme/BLE.gif"
     },
     {
-      "source": "GIF-105px/Clock.gif",
+      "source": "GIF-192px/Clock.gif",
       "destination": "Bruce-Theme/Clock.gif"
     },
     {
-      "source": "GIF-105px/Config.gif",
+      "source": "GIF-192px/Config.gif",
       "destination": "Bruce-Theme/Config.gif"
     },
     {
-      "source": "GIF-105px/Connect.gif",
+      "source": "GIF-192px/Connect.gif",
       "destination": "Bruce-Theme/Connect.gif"
     },
     {
-      "source": "GIF-105px/Ethernet.gif",
+      "source": "GIF-192px/Ethernet.gif",
       "destination": "Bruce-Theme/Ethernet.gif"
     },
     {
-      "source": "GIF-105px/FM.gif",
+      "source": "GIF-192px/FM.gif",
       "destination": "Bruce-Theme/FM.gif"
     },
     {
-      "source": "GIF-105px/Files.gif",
+      "source": "GIF-192px/Files.gif",
       "destination": "Bruce-Theme/Files.gif"
     },
     {
-      "source": "GIF-105px/GPS.gif",
+      "source": "GIF-192px/GPS.gif",
       "destination": "Bruce-Theme/GPS.gif"
     },
     {
-      "source": "GIF-105px/IR.gif",
+      "source": "GIF-192px/IR.gif",
       "destination": "Bruce-Theme/IR.gif"
     },
     {
-      "source": "GIF-105px/JSInterpreter.gif",
+      "source": "GIF-192px/JSInterpreter.gif",
       "destination": "Bruce-Theme/JSInterpreter.gif"
     },
     {
-      "source": "GIF-105px/NRF24.gif",
+      "source": "GIF-192px/NRF24.gif",
       "destination": "Bruce-Theme/NRF24.gif"
     },
     {
-      "source": "GIF-105px/Others.gif",
+      "source": "GIF-192px/Others.gif",
       "destination": "Bruce-Theme/Others.gif"
     },
     {
-      "source": "GIF-105px/RF.gif",
+      "source": "GIF-192px/RF.gif",
       "destination": "Bruce-Theme/RF.gif"
     },
     {
-      "source": "GIF-105px/RFID.gif",
+      "source": "GIF-192px/RFID.gif",
       "destination": "Bruce-Theme/RFID.gif"
     },
     {
-      "source": "GIF-105px/WiFi.gif",
+      "source": "GIF-192px/WiFi.gif",
       "destination": "Bruce-Theme/WiFi.gif"
     }
   ]
