@@ -99,13 +99,13 @@ async function main() {
   // Clear repositories folder at the start
   const repositoriesDir = "repositories";
   if (fs.existsSync(repositoriesDir)) {
-    console.log("🧹 Clearing existing repositories folder...");
+    "🧹 Clearing existing repositories folder...");
     fs.rmSync(repositoriesDir, { recursive: true, force: true });
   }
   fs.mkdirSync(repositoriesDir, { recursive: true });
-  console.log("📁 Created fresh repositories folder.");
+  "📁 Created fresh repositories folder.");
 
-  console.log("🔎 Searching for repositories with topic 'bruce-app-store'...");
+  "🔎 Searching for repositories with topic 'bruce-app-store'...");
 
   const repos = [];
   let page = 1;
@@ -126,7 +126,7 @@ async function main() {
     }
   }
 
-  console.log(`📦 Found ${repos.length} repositories.\n`);
+  `📦 Found ${repos.length} repositories.\n`);
 
   const categorizedResults = {}; // { category: [apps] }
 
@@ -140,7 +140,7 @@ async function main() {
       continue;
     }
 
-    console.log(`➡️  Processing ${full_name}...`);
+    `➡️  Processing ${full_name}...`);
 
     let latestRelease = null;
     let metadataRaw = null;
@@ -190,7 +190,7 @@ async function main() {
 
         const category = entry.category;
         if (!categorizedResults[category]) categorizedResults[category] = [];
-        console.log(releaseRes);
+
         categorizedResults[category].push({
           ...fullMetadata,
           metadata_file: metadataFilePath,
@@ -203,7 +203,6 @@ async function main() {
       if (repoHasError) hasError = true;
       else if (verbose) console.log(`✅ Valid metadata.json`);
     } catch (err) {
-      console.log(err);
       const msg = `⚠️  Error fetching metadata.json for ${full_name}: ${err.response?.status || err.message}`;
       console.warn(msg);
       errors.push(msg);
@@ -242,7 +241,6 @@ async function main() {
         }
       }
     } catch (e) {
-      console.log(e);
       console.warn("⚠️ Could not parse releases_manual.json, ignoring it.");
     }
   }
