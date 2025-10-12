@@ -81,21 +81,30 @@ function validateMetadata(entry, full_name, index = null) {
 }
 
 // Save full metadata entry to repository folder
-function saveMetadataFile(entry, owner, index = null) {
-  const dir = path.join("repositories", owner, entry.name);
+function saveMetadataFile(metadata) {
+  const dir = path.join("repositories", metadata.owner, metadata.repo, metadata.name);
   fs.mkdirSync(dir, { recursive: true });
   const filePath = path.join(dir, "metadata.json");
 
-  let dataToWrite = entry;
-  if (index !== null) {
-    dataToWrite = Array.isArray(entry) ? entry[index] : entry;
-  }
+  let dataToWrite = metadata;
+  // if (index !== null) {
+  //   dataToWrite = Array.isArray(entry) ? entry[index] : entry;
+  // }
 
   fs.writeFileSync(filePath, JSON.stringify(dataToWrite, null, 2));
   return filePath;
 }
 
 async function main() {
+  // Clear repositories folder at the start
+  const repositoriesDir = "repositories";
+  if (fs.existsSync(repositoriesDir)) {
+    console.log("🧹 Clearing existing repositories folder...");
+    fs.rmSync(repositoriesDir, { recursive: true, force: true });
+  }
+  fs.mkdirSync(repositoriesDir, { recursive: true });
+  console.log("📁 Created fresh repositories folder.");
+
   console.log("🔎 Searching for repositories with topic 'bruce-app-store'...");
 
   const repos = [];
@@ -140,13 +149,9 @@ async function main() {
     try {
       const releaseUrl = `https://api.github.com/repos/${owner.login}/${name}/releases/latest`;
       const releaseRes = await axios.get(releaseUrl, { headers });
-      latestRelease = {
-        tag_name: releaseRes.data.tag_name,
-        name: releaseRes.data.name,
-        published_at: releaseRes.data.published_at,
-      };
 
-      const metadataUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${latestRelease.tag_name}/metadata.json`;
+
+      const metadataUrl = `https://raw.githubusercontent.com/${owner.login}/${name}/${releaseRes.data.tag_name}/metadata.json`;
       const metadataRes = await axios.get(metadataUrl);
       metadataRaw =
         typeof metadataRes.data === "string" ? JSON.parse(metadataRes.data) : metadataRes.data;
@@ -168,25 +173,39 @@ async function main() {
           continue;
         }
 
+        const fullMetadata = {
+          name: entry.name,
+          category: entry.category,
+          description: entry.description,
+          version: releaseRes.data.name,
+          tag: releaseRes.data.tag_name,
+          published_at: releaseRes.data.published_at,
+          owner: owner.login,
+          repo: name,
+          files: entry.files,
+        };
+
         // Save full metadata file
-        const metadataFilePath = saveMetadataFile(entry, owner.login);
+        const metadataFilePath = saveMetadataFile(fullMetadata);
 
         const category = entry.category;
         if (!categorizedResults[category]) categorizedResults[category] = [];
-
+        console.log(releaseRes);
         categorizedResults[category].push({
-          repo: name,
-          owner: owner.login,
-          latest_release: latestRelease,
+          ...fullMetadata,
           metadata_file: metadataFilePath,
-          metadata_index: Array.isArray(metadataRaw) ? i : null,
-          metadata_summary: { ...entry, files: undefined }, // remove files for main releases.json
+          owner: undefined,
+          repo: undefined,
+          tag: undefined,
+          published_at: undefined,
+          files: undefined
         });
       }
 
       if (repoHasError) hasError = true;
       else if (verbose) console.log(`✅ Valid metadata.json`);
     } catch (err) {
+      console.log(err);
       const msg = `⚠️  Error fetching metadata.json for ${full_name}: ${err.response?.status || err.message}`;
       console.warn(msg);
       errors.push(msg);
@@ -200,36 +219,29 @@ async function main() {
     }
   }
 
-  // Sort apps and categories
-  for (const cat of Object.keys(categorizedResults)) {
-    categorizedResults[cat].sort((a, b) => a.metadata_summary.name.localeCompare(b.metadata_summary.name));
-  }
-
-  const sortedCategorizedResults = {};
-  Object.keys(categorizedResults)
-    .sort()
-    .forEach(cat => {
-      sortedCategorizedResults[cat] = categorizedResults[cat];
-    });
-
   // Merge releases_manual.json
   if (fs.existsSync("releases_manual.json")) {
     try {
       const manualData = JSON.parse(fs.readFileSync("releases_manual.json", "utf-8"));
       for (const [category, apps] of Object.entries(manualData)) {
-        if (!sortedCategorizedResults[category]) sortedCategorizedResults[category] = [];
+        if (!categorizedResults[category]) categorizedResults[category] = [];
 
         for (const app of apps) {
-          const exists = sortedCategorizedResults[category].some(
-            a => a.owner === app.owner && a.repo === app.repo && a.metadata_summary.name === app.metadata_summary.name
+          const exists = categorizedResults[category].some(
+            a => a.owner === app.owner && a.repo === app.repo && a.name === app.name
           );
           if (!exists) {
-            // Save metadata file if missing
-            if (!fs.existsSync(app.metadata_file)) {
-              console.log(app.metadata_summary);
-              saveMetadataFile(app.metadata_summary, app.owner);
-            }
-            sortedCategorizedResults[category].push(app);
+            // Save full metadata file
+            const metadataFilePath = saveMetadataFile(app);
+            categorizedResults[category].push({
+              ...app,
+              metadata_file: metadataFilePath,
+              owner: undefined,
+              repo: undefined,
+              tag: undefined,
+              published_at: undefined,
+              files: undefined
+            });
           }
         }
       }
@@ -239,16 +251,16 @@ async function main() {
     }
   }
 
-  // Re-sort after merge
-  for (const cat of Object.keys(sortedCategorizedResults)) {
-    sortedCategorizedResults[cat].sort((a, b) => a.metadata_summary.name.localeCompare(b.metadata_summary.name));
+  // Sort
+  for (const cat of Object.keys(categorizedResults)) {
+    categorizedResults[cat].sort((a, b) => a.name.localeCompare(b.name));
   }
 
   const finalSortedResults = {};
-  Object.keys(sortedCategorizedResults)
+  Object.keys(categorizedResults)
     .sort()
     .forEach(cat => {
-      finalSortedResults[cat] = sortedCategorizedResults[cat];
+      finalSortedResults[cat] = categorizedResults[cat];
     });
 
   // Write main releases.json
