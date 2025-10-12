@@ -1,4 +1,92 @@
 {
+  "Games": [
+    {
+      "name": "Dino Game",
+      "category": "Games",
+      "description": "Written for T-Embed",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "tag": "UNKNOWN",
+      "published_at": "UNKNOWN",
+      "files": [
+        {
+          "source": "main/sd_files/interpreter/dino_game.js",
+          "destination": "dino_game.js"
+        }
+      ]
+    },
+    {
+      "name": "Highway Racer",
+      "category": "Games",
+      "description": "Written for T-Embed",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "tag": "UNKNOWN",
+      "published_at": "UNKNOWN",
+      "files": [
+        {
+          "source": "main/sd_files/interpreter/highway_racer.js",
+          "destination": "highway_racer.js"
+        }
+      ]
+    }
+  ],
+  "IR": [
+    {
+      "name": "IR Bruce Force",
+      "category": "IR",
+      "description": "Brute force IR",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "tag": "UNKNOWN",
+      "published_at": "UNKNOWN",
+      "files": [
+        {
+          "source": "main/sd_files/interpreter/ir_brute.js",
+          "destination": "ir_brute.js"
+        }
+      ]
+    }
+  ],
+  "RF": [
+    {
+      "name": "RF Bruce Force",
+      "category": "RF",
+      "description": "Brute force RF",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "tag": "UNKNOWN",
+      "published_at": "UNKNOWN",
+      "files": [
+        {
+          "source": "main/sd_files/interpreter/rf_brute.js",
+          "destination": "rf_brute.js"
+        }
+      ]
+    }
+  ],
+  "Utilities": [
+    {
+      "name": "Calculator",
+      "category": "Utilities",
+      "description": "Written for T-Embed",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "tag": "UNKNOWN",
+      "published_at": "UNKNOWN",
+      "files": [
+        {
+          "source": "main/sd_files/interpreter/calculator_t-embed.js",
+          "destination": "calculator_t-embed.js"
+        }
+      ]
+    }
+  ],
   "WiFi": [
     {
       "name": "WiFi Bruce Force",
@@ -12,7 +100,7 @@
       "files": [
         {
           "source": "main/sd_files/interpreter/wifi_brute.js",
-          "destination": "WiFiBruceForce.js"
+          "destination": "wifi_brute.js"
         }
       ]
     }
