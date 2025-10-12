@@ -194,8 +194,6 @@ async function main() {
         categorizedResults[category].push({
           ...fullMetadata,
           metadata_file: metadataFilePath,
-          owner: undefined,
-          repo: undefined,
           tag: undefined,
           published_at: undefined,
           files: undefined
@@ -236,8 +234,6 @@ async function main() {
             categorizedResults[category].push({
               ...app,
               metadata_file: metadataFilePath,
-              owner: undefined,
-              repo: undefined,
               tag: undefined,
               published_at: undefined,
               files: undefined
