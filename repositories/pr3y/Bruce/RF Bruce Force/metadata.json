@@ -1,0 +1,16 @@
+{
+  "name": "RF Bruce Force",
+  "category": "RF",
+  "description": "Brute force RF",
+  "repo": "Bruce",
+  "owner": "pr3y",
+  "version": "UNKNOWN",
+  "tag": "UNKNOWN",
+  "published_at": "UNKNOWN",
+  "files": [
+    {
+      "source": "main/sd_files/interpreter/rf_brute.js",
+      "destination": "rf_brute.js"
+    }
+  ]
+}

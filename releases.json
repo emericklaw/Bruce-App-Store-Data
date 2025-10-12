@@ -10,6 +10,48 @@
       "metadata_file": "repositories/emericklaw/Bruce-Tone-Generator-App/Tone Generator/metadata.json"
     }
   ],
+  "Games": [
+    {
+      "name": "Dino Game",
+      "category": "Games",
+      "description": "Written for T-Embed",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "metadata_file": "repositories/pr3y/Bruce/Dino Game/metadata.json"
+    },
+    {
+      "name": "Highway Racer",
+      "category": "Games",
+      "description": "Written for T-Embed",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "metadata_file": "repositories/pr3y/Bruce/Highway Racer/metadata.json"
+    }
+  ],
+  "IR": [
+    {
+      "name": "IR Bruce Force",
+      "category": "IR",
+      "description": "Brute force IR",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "metadata_file": "repositories/pr3y/Bruce/IR Bruce Force/metadata.json"
+    }
+  ],
+  "RF": [
+    {
+      "name": "RF Bruce Force",
+      "category": "RF",
+      "description": "Brute force RF",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "metadata_file": "repositories/pr3y/Bruce/RF Bruce Force/metadata.json"
+    }
+  ],
   "Themes": [
     {
       "name": "Bruce Theme - 105px GIF",
@@ -105,6 +147,15 @@
     }
   ],
   "Utilities": [
+    {
+      "name": "Calculator",
+      "category": "Utilities",
+      "description": "Written for T-Embed",
+      "repo": "Bruce",
+      "owner": "pr3y",
+      "version": "UNKNOWN",
+      "metadata_file": "repositories/pr3y/Bruce/Calculator/metadata.json"
+    },
     {
       "name": "Flashlight",
       "category": "Utilities",

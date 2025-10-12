@@ -1,0 +1,16 @@
+{
+  "name": "IR Bruce Force",
+  "category": "IR",
+  "description": "Brute force IR",
+  "repo": "Bruce",
+  "owner": "pr3y",
+  "version": "UNKNOWN",
+  "tag": "UNKNOWN",
+  "published_at": "UNKNOWN",
+  "files": [
+    {
+      "source": "main/sd_files/interpreter/ir_brute.js",
+      "destination": "ir_brute.js"
+    }
+  ]
+}

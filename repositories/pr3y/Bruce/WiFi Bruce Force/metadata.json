@@ -10,7 +10,7 @@
   "files": [
     {
       "source": "main/sd_files/interpreter/wifi_brute.js",
-      "destination": "WiFiBruceForce.js"
+      "destination": "wifi_brute.js"
     }
   ]
 }

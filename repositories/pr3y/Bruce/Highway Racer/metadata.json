@@ -1,0 +1,16 @@
+{
+  "name": "Highway Racer",
+  "category": "Games",
+  "description": "Written for T-Embed",
+  "repo": "Bruce",
+  "owner": "pr3y",
+  "version": "UNKNOWN",
+  "tag": "UNKNOWN",
+  "published_at": "UNKNOWN",
+  "files": [
+    {
+      "source": "main/sd_files/interpreter/highway_racer.js",
+      "destination": "highway_racer.js"
+    }
+  ]
+}
