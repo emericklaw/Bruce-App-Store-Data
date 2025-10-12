@@ -1,0 +1,16 @@
+{
+  "name": "WiFi Bruce Force",
+  "category": "WiFi",
+  "description": "Brute force WiFi passwords with a password list",
+  "repo": "Bruce",
+  "owner": "pr3y",
+  "version": "UNKNOWN",
+  "tag": "UNKNOWN",
+  "published_at": "UNKNOWN",
+  "files": [
+    {
+      "source": "main/sd_files/interpreter/wifi_brute.js",
+      "destination": "WiFiBruceForce.js"
+    }
+  ]
+}
