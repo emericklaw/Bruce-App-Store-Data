@@ -89,7 +89,7 @@
       "name": "App Store",
       "category": "Tools",
       "description": "App store for Bruce devices with over-the-air install and updates for scripts and themes",
-      "version": "1.0.0",
+      "version": "0.1.0",
       "owner": "emericklaw",
       "repo": "Bruce-App-Store",
       "metadata_file": "repositories/emericklaw/Bruce-App-Store/App Store/metadata.json"
