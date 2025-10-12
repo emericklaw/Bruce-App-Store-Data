@@ -99,13 +99,13 @@ async function main() {
   // Clear repositories folder at the start
   const repositoriesDir = "repositories";
   if (fs.existsSync(repositoriesDir)) {
-    "🧹 Clearing existing repositories folder...");
+    console.log("🧹 Clearing existing repositories folder...");
     fs.rmSync(repositoriesDir, { recursive: true, force: true });
   }
   fs.mkdirSync(repositoriesDir, { recursive: true });
-  "📁 Created fresh repositories folder.");
+  console.log("📁 Created fresh repositories folder.");
 
-  "🔎 Searching for repositories with topic 'bruce-app-store'...");
+  console.log("🔎 Searching for repositories with topic 'bruce-app-store'...");
 
   const repos = [];
   let page = 1;
@@ -126,7 +126,7 @@ async function main() {
     }
   }
 
-  `📦 Found ${repos.length} repositories.\n`);
+  console.log(`📦 Found ${repos.length} repositories.\n`);
 
   const categorizedResults = {}; // { category: [apps] }
 
@@ -140,7 +140,7 @@ async function main() {
       continue;
     }
 
-    `➡️  Processing ${full_name}...`);
+    console.log(`➡️  Processing ${full_name}...`);
 
     let latestRelease = null;
     let metadataRaw = null;
