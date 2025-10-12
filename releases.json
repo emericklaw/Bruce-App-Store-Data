@@ -5,6 +5,8 @@
       "category": "Audio",
       "description": "Tone generator that can play different frequencies/musical notes with customisable duration",
       "version": "1.0.0",
+      "owner": "emericklaw",
+      "repo": "Bruce-Tone-Generator-App",
       "metadata_file": "repositories/emericklaw/Bruce-Tone-Generator-App/Tone Generator/metadata.json"
     }
   ],
@@ -14,6 +16,8 @@
       "category": "Themes",
       "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
       "version": "1.2",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
       "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 105px GIF/metadata.json"
     },
     {
@@ -21,6 +25,8 @@
       "category": "Themes",
       "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
       "version": "1.2",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
       "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 105px PNG/metadata.json"
     },
     {
@@ -28,6 +34,8 @@
       "category": "Themes",
       "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
       "version": "1.2",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
       "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 140px GIF/metadata.json"
     },
     {
@@ -35,6 +43,8 @@
       "category": "Themes",
       "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
       "version": "1.2",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
       "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 140px PNG/metadata.json"
     },
     {
@@ -42,6 +52,8 @@
       "category": "Themes",
       "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
       "version": "1.2",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
       "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 180px GIF/metadata.json"
     },
     {
@@ -49,6 +61,8 @@
       "category": "Themes",
       "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
       "version": "1.2",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
       "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 180px PNG/metadata.json"
     },
     {
@@ -56,6 +70,8 @@
       "category": "Themes",
       "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
       "version": "1.2",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
       "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 192px GIF/metadata.json"
     },
     {
@@ -63,6 +79,8 @@
       "category": "Themes",
       "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
       "version": "1.2",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
       "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 192px PNG/metadata.json"
     }
   ],
@@ -72,6 +90,8 @@
       "category": "Tools",
       "description": "App store for Bruce devices with over-the-air install and updates for scripts and themes",
       "version": "1.0.0",
+      "owner": "emericklaw",
+      "repo": "Bruce-App-Store",
       "metadata_file": "repositories/emericklaw/Bruce-App-Store/App Store/metadata.json"
     },
     {
@@ -79,6 +99,8 @@
       "category": "Tools",
       "description": "Device information display showing hardware details and memory statistics",
       "version": "1.0.0",
+      "owner": "emericklaw",
+      "repo": "Bruce-Device-Info-App",
       "metadata_file": "repositories/emericklaw/Bruce-Device-Info-App/Device Info/metadata.json"
     }
   ],
@@ -88,6 +110,8 @@
       "category": "Utilities",
       "description": "Simple multi-colour flashlight",
       "version": "1.0.0",
+      "owner": "emericklaw",
+      "repo": "Bruce-Flashlight-App",
       "metadata_file": "repositories/emericklaw/Bruce-Flashlight-App/Flashlight/metadata.json"
     },
     {
@@ -95,6 +119,8 @@
       "category": "Utilities",
       "description": "A simple test app for the Bruce JavaScript interpreter that displays 'Hello World!' on the screen",
       "version": "1.0.0",
+      "owner": "emericklaw",
+      "repo": "Bruce-Hello-World-Example-App",
       "metadata_file": "repositories/emericklaw/Bruce-Hello-World-Example-App/Hello World/metadata.json"
     }
   ],
@@ -103,6 +129,8 @@
       "name": "WiFi Bruce Force",
       "category": "WiFi",
       "description": "Brute force WiFi passwords with a password list",
+      "repo": "Bruce",
+      "owner": "pr3y",
       "version": "UNKNOWN",
       "metadata_file": "repositories/pr3y/Bruce/WiFi Bruce Force/metadata.json"
     }
