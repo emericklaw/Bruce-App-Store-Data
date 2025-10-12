@@ -2,9 +2,9 @@
   "name": "App Store",
   "category": "Tools",
   "description": "App store for Bruce devices with over-the-air install and updates for scripts and themes",
-  "version": "0.1.0",
-  "tag": "0.1.0",
-  "published_at": "2025-10-12T01:04:00Z",
+  "version": "0.1.1",
+  "tag": "0.1.1",
+  "published_at": "2025-10-12T01:47:16Z",
   "owner": "emericklaw",
   "repo": "Bruce-App-Store",
   "files": [
