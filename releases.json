@@ -164,15 +164,6 @@
       "owner": "emericklaw",
       "repo": "Bruce-Flashlight-App",
       "metadata_file": "repositories/emericklaw/Bruce-Flashlight-App/Flashlight/metadata.json"
-    },
-    {
-      "name": "Hello World",
-      "category": "Utilities",
-      "description": "A simple test app for the Bruce JavaScript interpreter that displays 'Hello World!' on the screen",
-      "version": "1.0.0",
-      "owner": "emericklaw",
-      "repo": "Bruce-Hello-World-Example-App",
-      "metadata_file": "repositories/emericklaw/Bruce-Hello-World-Example-App/Hello World/metadata.json"
     }
   ],
   "WiFi": [
