@@ -1,0 +1,16 @@
+{
+  "name": "Password Protect",
+  "category": "Utilities",
+  "description": "Password protection app that locks your Bruce device on startup or on-demand.",
+  "version": "1.0.0",
+  "tag": "1.0.0",
+  "published_at": "2026-01-23T05:07:52Z",
+  "owner": "emericklaw",
+  "repo": "Bruce-Password-Protect-App",
+  "files": [
+    {
+      "source": "Password Protect.js",
+      "destination": "Password Protect.js"
+    }
+  ]
+}
