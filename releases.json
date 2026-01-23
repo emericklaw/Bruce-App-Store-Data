@@ -175,13 +175,13 @@
       "metadata_file": "repositories/emericklaw/Bruce-Hello-World-Example-App/Hello World/metadata.json"
     },
     {
-      "name": "Password Protect",
+      "name": "Lock Device",
       "category": "Utilities",
       "description": "Password protection app that locks your Bruce device on startup or on-demand.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "owner": "emericklaw",
       "repo": "Bruce-Lock-Device-App",
-      "metadata_file": "repositories/emericklaw/Bruce-Lock-Device-App/Password Protect/metadata.json"
+      "metadata_file": "repositories/emericklaw/Bruce-Lock-Device-App/Lock Device/metadata.json"
     }
   ],
   "WiFi": [

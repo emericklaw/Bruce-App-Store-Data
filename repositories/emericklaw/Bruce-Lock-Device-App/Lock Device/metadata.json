@@ -1,16 +1,16 @@
 {
-  "name": "Password Protect",
+  "name": "Lock Device",
   "category": "Utilities",
   "description": "Password protection app that locks your Bruce device on startup or on-demand.",
-  "version": "1.0.0",
-  "tag": "1.0.0",
-  "published_at": "2026-01-23T05:07:52Z",
+  "version": "1.1.0",
+  "tag": "1.1.0",
+  "published_at": "2026-01-23T08:36:32Z",
   "owner": "emericklaw",
   "repo": "Bruce-Lock-Device-App",
   "files": [
     {
-      "source": "Password Protect.js",
-      "destination": "Password Protect.js"
+      "source": "Lock Device.js",
+      "destination": "Lock Device.js"
     }
   ]
 }
