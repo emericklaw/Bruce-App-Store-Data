@@ -21,6 +21,15 @@
       "metadata_file": "repositories/pr3y/Bruce/Dino Game/metadata.json"
     },
     {
+      "name": "Fishing Legend",
+      "category": "Games",
+      "description": "Fishing Legend is a retro RPG fishing game for Bruce Firmware. Catch rare fish, upgrade your gear, and become a legend!",
+      "repo": "Fishing-Legend-Games-Bruce-Firmware",
+      "owner": "metalgalz",
+      "version": "UNKNOWN",
+      "metadata_file": "repositories/metalgalz/Fishing-Legend-Games-Bruce-Firmware/Fishing Legend/metadata.json"
+    },
+    {
       "name": "Highway Racer",
       "category": "Games",
       "description": "Written for T-Embed",
