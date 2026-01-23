@@ -180,8 +180,8 @@
       "description": "Password protection app that locks your Bruce device on startup or on-demand.",
       "version": "1.0.0",
       "owner": "emericklaw",
-      "repo": "Bruce-Password-Protect-App",
-      "metadata_file": "repositories/emericklaw/Bruce-Password-Protect-App/Password Protect/metadata.json"
+      "repo": "Bruce-Lock-Device-App",
+      "metadata_file": "repositories/emericklaw/Bruce-Lock-Device-App/Password Protect/metadata.json"
     }
   ],
   "WiFi": [
