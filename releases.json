@@ -52,6 +52,80 @@
       "metadata_file": "repositories/pr3y/Bruce/RF Bruce Force/metadata.json"
     }
   ],
+  "Themes": [
+    {
+      "name": "Bruce Theme - 105px GIF",
+      "category": "Themes",
+      "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+      "version": "1.3",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
+      "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 105px GIF/metadata.json"
+    },
+    {
+      "name": "Bruce Theme - 105px PNG",
+      "category": "Themes",
+      "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+      "version": "1.3",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
+      "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 105px PNG/metadata.json"
+    },
+    {
+      "name": "Bruce Theme - 140px GIF",
+      "category": "Themes",
+      "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+      "version": "1.3",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
+      "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 140px GIF/metadata.json"
+    },
+    {
+      "name": "Bruce Theme - 140px PNG",
+      "category": "Themes",
+      "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+      "version": "1.3",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
+      "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 140px PNG/metadata.json"
+    },
+    {
+      "name": "Bruce Theme - 180px GIF",
+      "category": "Themes",
+      "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+      "version": "1.3",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
+      "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 180px GIF/metadata.json"
+    },
+    {
+      "name": "Bruce Theme - 180px PNG",
+      "category": "Themes",
+      "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+      "version": "1.3",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
+      "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 180px PNG/metadata.json"
+    },
+    {
+      "name": "Bruce Theme - 192px GIF",
+      "category": "Themes",
+      "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+      "version": "1.3",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
+      "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 192px GIF/metadata.json"
+    },
+    {
+      "name": "Bruce Theme - 192px PNG",
+      "category": "Themes",
+      "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+      "version": "1.3",
+      "owner": "emericklaw",
+      "repo": "Bruce-Theme",
+      "metadata_file": "repositories/emericklaw/Bruce-Theme/Bruce Theme - 192px PNG/metadata.json"
+    }
+  ],
   "Tools": [
     {
       "name": "App Store",
@@ -61,6 +135,15 @@
       "owner": "emericklaw",
       "repo": "App-Store",
       "metadata_file": "repositories/emericklaw/App-Store/App Store/metadata.json"
+    },
+    {
+      "name": "Device Info",
+      "category": "Tools",
+      "description": "Device information display showing hardware details and memory statistics",
+      "version": "1.0.0",
+      "owner": "emericklaw",
+      "repo": "Bruce-Device-Info-App",
+      "metadata_file": "repositories/emericklaw/Bruce-Device-Info-App/Device Info/metadata.json"
     }
   ],
   "Utilities": [
