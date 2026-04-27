@@ -1,0 +1,16 @@
+{
+  "name": "Device Info",
+  "category": "Tools",
+  "description": "Device information display showing hardware details and memory statistics",
+  "version": "1.0.0",
+  "tag": "1.0.0",
+  "published_at": "2025-10-11T20:18:19Z",
+  "owner": "emericklaw",
+  "repo": "Bruce-Device-Info-App",
+  "files": [
+    {
+      "source": "DeviceInfo.js",
+      "destination": "DeviceInfo.js"
+    }
+  ]
+}
