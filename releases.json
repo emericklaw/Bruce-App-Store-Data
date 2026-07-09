@@ -1,4 +1,15 @@
 {
+  "Audio": [
+    {
+      "name": "Tone Generator",
+      "category": "Audio",
+      "description": "Tone generator that can play different frequencies/musical notes with customisable duration",
+      "version": "1.0.0",
+      "owner": "emericklaw",
+      "repo": "Bruce-Tone-Generator-App",
+      "metadata_file": "repositories/emericklaw/Bruce-Tone-Generator-App/Tone Generator/metadata.json"
+    }
+  ],
   "Games": [
     {
       "name": "Dino Game",
