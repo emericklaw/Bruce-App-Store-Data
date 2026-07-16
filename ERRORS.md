@@ -1,5 +1,4 @@
 # ❗ Error Report
 
-### ⚠️ 2 Metadata / Processing Issues
-- ⚠️  Error fetching metadata.json for Senape3000/ProtoPirate-Bruce: 404
-- ⚠️  Error fetching metadata.json for badgib/BruceScripts: 404
+### ⚠️ 1 Metadata / Processing Issues
+- ❌ Failed to search repositories (page 1): Request failed with status code 503
