@@ -1,0 +1,16 @@
+{
+  "name": "Flashlight",
+  "category": "Utilities",
+  "description": "Simple multi-colour flashlight",
+  "version": "1.0.0",
+  "tag": "1.0.0",
+  "published_at": "2025-10-11T20:18:24Z",
+  "owner": "emericklaw",
+  "repo": "Bruce-Flashlight-App",
+  "files": [
+    {
+      "source": "Flashlight.js",
+      "destination": "Flashlight.js"
+    }
+  ]
+}
