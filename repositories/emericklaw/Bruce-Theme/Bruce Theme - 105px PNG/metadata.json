@@ -1,0 +1,80 @@
+{
+  "name": "Bruce Theme - 105px PNG",
+  "category": "Themes",
+  "description": "A bold, glowing upgrade for your Bruce device with neon energy and shark power",
+  "version": "1.3",
+  "tag": "1.3",
+  "published_at": "2025-12-28T16:52:40Z",
+  "owner": "emericklaw",
+  "repo": "Bruce-Theme",
+  "files": [
+    {
+      "source": "PNG-105px/Bruce_Theme.json",
+      "destination": "Bruce-Theme/Bruce_Theme.json"
+    },
+    {
+      "source": "PNG-105px/BLE.png",
+      "destination": "Bruce-Theme/BLE.png"
+    },
+    {
+      "source": "PNG-105px/Clock.png",
+      "destination": "Bruce-Theme/Clock.png"
+    },
+    {
+      "source": "PNG-105px/Config.png",
+      "destination": "Bruce-Theme/Config.png"
+    },
+    {
+      "source": "PNG-105px/Connect.png",
+      "destination": "Bruce-Theme/Connect.png"
+    },
+    {
+      "source": "PNG-105px/Ethernet.png",
+      "destination": "Bruce-Theme/Ethernet.png"
+    },
+    {
+      "source": "PNG-105px/FM.png",
+      "destination": "Bruce-Theme/FM.png"
+    },
+    {
+      "source": "PNG-105px/Files.png",
+      "destination": "Bruce-Theme/Files.png"
+    },
+    {
+      "source": "PNG-105px/GPS.png",
+      "destination": "Bruce-Theme/GPS.png"
+    },
+    {
+      "source": "PNG-105px/IR.png",
+      "destination": "Bruce-Theme/IR.png"
+    },
+    {
+      "source": "PNG-105px/JSInterpreter.png",
+      "destination": "Bruce-Theme/JSInterpreter.png"
+    },
+    {
+      "source": "PNG-105px/NRF24.png",
+      "destination": "Bruce-Theme/NRF24.png"
+    },
+    {
+      "source": "PNG-105px/LoRa.png",
+      "destination": "Bruce-Theme/LoRa.png"
+    },
+    {
+      "source": "PNG-105px/Others.png",
+      "destination": "Bruce-Theme/Others.png"
+    },
+    {
+      "source": "PNG-105px/RF.png",
+      "destination": "Bruce-Theme/RF.png"
+    },
+    {
+      "source": "PNG-105px/RFID.png",
+      "destination": "Bruce-Theme/RFID.png"
+    },
+    {
+      "source": "PNG-105px/WiFi.png",
+      "destination": "Bruce-Theme/WiFi.png"
+    }
+  ]
+}
