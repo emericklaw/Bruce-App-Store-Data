@@ -1,15 +1,4 @@
 {
-  "Audio": [
-    {
-      "name": "Tone Generator",
-      "category": "Audio",
-      "description": "Tone generator that can play different frequencies/musical notes with customisable duration",
-      "version": "1.0.0",
-      "owner": "emericklaw",
-      "repo": "Bruce-Tone-Generator-App",
-      "metadata_file": "repositories/emericklaw/Bruce-Tone-Generator-App/Tone Generator/metadata.json"
-    }
-  ],
   "Games": [
     {
       "name": "Dino Game",
@@ -74,13 +63,13 @@
       "metadata_file": "repositories/pr3y/Bruce/Calculator/metadata.json"
     },
     {
-      "name": "Lock Device",
+      "name": "Flashlight",
       "category": "Utilities",
-      "description": "Password protection app that locks your Bruce device on startup or on-demand.",
-      "version": "1.1.0",
+      "description": "Simple multi-colour flashlight",
+      "version": "1.0.0",
       "owner": "emericklaw",
-      "repo": "Bruce-Lock-Device-App",
-      "metadata_file": "repositories/emericklaw/Bruce-Lock-Device-App/Lock Device/metadata.json"
+      "repo": "Bruce-Flashlight-App",
+      "metadata_file": "repositories/emericklaw/Bruce-Flashlight-App/Flashlight/metadata.json"
     }
   ],
   "WiFi": [
